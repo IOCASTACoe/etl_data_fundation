@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="pt-br" lang="pt-br" xmlins="http://www.w3.org/1999/xhtml">
+
+<head>
+    <style>
+        tbody {
+            font-size: 95%;
+            font-style: italic;
+        }
+
+        tfoot {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{context.tittle}}</h1>
+
+
+    <table border="1">
+        <colgroup>
+            <col span="2">
+            <col style="border: 2px solid #f7f7f7">
+            <col span="9">
+        </colgroup>
+        <thead>
+            <tr>
+                {% for item in context.headers %}
+                    <th>{{item}}</td>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        {% for record in context.records %}
+        <tbody>
+            <tr>
+                {% for column in context.headers %}
+                    <td>{{record[column]}}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <p>{{context.caption}}</p>
+</body>
+
+</html>

@@ -194,3 +194,4 @@ cython_debug/
 .cursorindexingignore
 
 /logs
+/temp_files
