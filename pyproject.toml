@@ -1,0 +1,19 @@
+[project]
+name = "etl-data-fundation"
+version = "0.1.0"
+description = "Publicação dos dados silver para gold"
+authors = [
+    {name = "Duarte, Wilson Beirigo",email = "wilson.duarte@aecom.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "geopandas (>=1.0.1,<2.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "geoserver-rest (>=2.9.1,<3.0.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
