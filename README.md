@@ -1,13 +1,14 @@
 
+
 # ETL Silver to Gold
 
 ## Informações necessárias
 
-### Criar o pdf com dicinário de dados
+### Criar o pdf com dicinário de dados :rocket:
 
-- Pegar do .XLSX
-- Pegar da tabela do .gpkg
-- Fazer o pdfexit
+- Pegar do .XLSX :white_check_mark:
+- Pegar da tabela do .gpkg  :white_check_mark:
+- Fazer o pdfexit :white_check_mark:
 - Colocar o PDF em um www
 - Adicionar o link do www no XML
 
@@ -21,12 +22,14 @@
 
 - Feature store:
 
-- Extrair do XML
+- Extrair do XML  :white_check_mark:
   - Inicio
+  - Termino
   - Termino
   - Theme
   - Abstract
-  - Nome
+  - Quality
+  - category_aconym
 
 - Criar a datastore
   - Atalizar do featurestore com
@@ -64,5 +67,11 @@ export C_INCLUDE_PATH=/usr/include/gdal
 [referência](https://linlinzhao.com/tech/2021/01/20/jinja-report.html) 
 
 ```sh
+poetry add pdfkit
 sudo apt install -y wkhtmltopdf
+
 ```
+
+## Markdown
+
+[ícones](https://gist.github.com/rxaviers/7360908)

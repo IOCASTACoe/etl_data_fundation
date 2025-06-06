@@ -2,9 +2,15 @@ import logging
 from src.lib.loggin import setup_logging
 import config.config as settings
 import jinja2
-import pandas as pd
 from pandas import read_excel
 import pdfkit
+import os
+from osgeo import ogr
+from osgeo import gdal
+import glob
+import pathlib
+from geo.Geoserver import DataProvider, Geoserver
+import xml.etree.ElementTree as ET
 
 logger = logging.getLogger(__name__)
 
@@ -19,10 +25,6 @@ def read_excel_file(file_path: str) -> list[dict]:
         record: dict = {"desc": item["Description"], "name": item["Name"]}
         lst.append(record)
 
-
-import glob
-import pathlib
-import os
 
 
 def get_geopackage(dir_path: str) -> str:
@@ -54,8 +56,6 @@ def valid_files(dir_path: str, extension: str) -> pathlib:
     return file_path
 
 
-from osgeo import ogr
-from osgeo import gdal
 
 
 def build_final_attributes(file_path: str, comments: dict) -> list[dict]:
@@ -128,7 +128,31 @@ def render_html(values:list[dict], name:str, abstract:str) -> str:
     return html_path
 
 
-def html2pdf(html_path:str):
+def upload_sld_to_geoserver(file:str) -> str:
+
+    """
+    geo = Geoserver(
+        service_url=settings.GEOSERVER_URL,
+        username=settings.GEOSERVER_USER,
+        password=settings.GEOSERVER_PASSWORD
+    )
+    styles = geo.get_styles()
+    geo.upload_style(path=r'path\to\sld\file.sld', workspace='demo')
+    geo.publish_style(layer_name='geoserver_layer_name', style_name='sld_file_name', workspace='demo')
+    geo.publish_style(layer_name='geoserver_layer_name', style_name='raster_file_name', workspace='demo')
+    
+
+    try:
+        geo.get_style(style_name="pointa", workspace=settings.GEOSERVER_WORKSPACE)
+    except:
+        geo.upload_style(path=r'path\to\sld\file.sld', workspace=settings.GEOSERVER_WORKSPACE)
+
+    print()
+    """
+    return ""
+
+
+def html2pdf(html_path:str) -> str:
     options = {
         'page-size': 'Letter',
         'margin-top': '0.35in',
@@ -145,13 +169,105 @@ def html2pdf(html_path:str):
     with open(html_path) as f:
         pdfkit.from_file(f, pdf_path, options=options)
 
+    return html_path
+
+class HandleXML:
+
+    record: dict = dict()
+
+    _namespaces: tuple[str] = {
+        "gmd": "http://www.isotc211.org/2005/gmd",
+        "gco": "http://www.isotc211.org/2005/gco",
+        # Add other namespaces as needed
+    }
+
+    def __init__(self, file_path: str):
+
+
+        logger.info(f"Processing XML file: {file_path}")
+
+        root = self._read_gmd_xml(file_path)
+
+        if root is not None:
+            # Define namespaces (if present in your GMD file)
+
+
+
+            title_xpath: str = (
+                ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString"
+            )
+            date_xpath: str = (
+                ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation//gmd:date/gmd:CI_Date/gmd:date/gco:Date"
+            )
+            abstract_xpath: str = (
+                ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString"
+            )
+            quality_xpath: str = (
+                ".//gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep/gmd:description/gco:CharacterString"
+            )
+
+            # Example: Extracting title and abstract
+            title_elements = self._extract_gmd_data(root, title_xpath, self._namespaces)
+            date_elements = self._extract_gmd_data(root, date_xpath, self._namespaces)
+            abstract_elements = self._extract_gmd_data(
+                root, abstract_xpath, self._namespaces
+            )
+            quality_elements = self._extract_gmd_data(
+                root, quality_xpath, self._namespaces
+            )
+            theme_elements = root.findall("./SupplementaryFiles/Theme")
+            category_acronym_elements = root.findall(
+                "./SupplementaryFiles/CategoryAcronym"
+            )
+
+            self.record["title"] = (
+                title_elements[0].text if category_acronym_elements else ""
+            )
+            self.record["date"] = date_elements[0].text if theme_elements else ""
+            self.record["abstract"] = abstract_elements[0].text if quality_elements else ""
+            self.record["quality"] = quality_elements[0].text if abstract_elements else ""
+            self.record["theme"] = theme_elements[0].text if date_elements else ""
+            self.record["category_acronym"] = (
+                category_acronym_elements[0].text if title_elements else ""
+            )
+
+    def _read_gmd_xml(self, file_path):
+
+        try:
+            tree = ET.parse(file_path)
+            root = tree.getroot()
+            return root
+        except ET.ParseError as e:
+            logging.error(f"Error parsing XML file: {e}")
+            return None
+        except FileNotFoundError:
+            logging.error(f"Error: File not found: {file_path}")
+            return None
+
+    def _extract_gmd_data(self, root, xpath, namespaces=None):
+        if namespaces is None:
+            namespaces = {}
+        return root.findall(xpath, namespaces)
+
+
+
 
 if __name__ == "__main__":
+
     setup_logging()
+
     dir_path: str = get_path("BIO/especies_ameacadas/20240101/00/")
     get_file_name = find_files_with_extension_glob(directory=dir_path, extension=".shp")
     arquivo: pathlib = valid_files(dir_path=dir_path, extension=".shp")
     file_name: str = arquivo.name.replace(".shp", "")
+
+
+    """ Get XML data"""
+    xml_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".xml")
+    obj_xml = HandleXML(xml_file_full_path.__str__())
+    record:dict = obj_xml.record
+
+
 
     """ Excel data dictctonary """
     excel_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".xlsx")
@@ -161,19 +277,28 @@ if __name__ == "__main__":
     excel_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".gpkg")
     attibutes:list[dict] = build_final_attributes(excel_file_full_path.__str__(), 
                                        data_dict)
-
+    """ Generate PDF file"""
     html_path:str = render_html(values=attibutes, name=file_name, abstract="fdslsdfsdçfdsfsd")
-    
     html_path: str = f"{settings.TEMP_FILES}{file_name}"
-    html2pdf(html_path)
+    file_to_remove:str = html2pdf(html_path)
+    os.remove(file_to_remove)
+
+
+    """ Get sld data"""
+    sld_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".sld")
+    upload_sld_to_geoserver(sld_file_full_path.__str__())
 
 
 
+    
+
+    print()
 
 
 
 
     paths: list[str] = [
+        "BIO/importancia_biologica/MMA/20181218/00",
         "CMA/frequencia_queimadas/MapBiomas/20240618/",
         "BIO/especies_ameacadas/20240101/00/",
         "BIO/zona_costeira/IBGE/20240730/00/",
