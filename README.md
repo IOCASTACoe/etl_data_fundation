@@ -2,6 +2,30 @@
 
 # ETL Silver to Gold
 
+
+```python
+def upload_sld_to_geoserver(file:str) -> str:
+
+    geo = Geoserver(
+        service_url=settings.GEOSERVER_URL,
+        username=settings.GEOSERVER_USER,
+        password=settings.GEOSERVER_PASSWORD
+    )
+    styles = geo.get_styles()
+    geo.upload_style(path=r'path\to\sld\file.sld', workspace='demo')
+    geo.publish_style(layer_name='geoserver_layer_name', style_name='sld_file_name', workspace='demo')
+    geo.publish_style(layer_name='geoserver_layer_name', style_name='raster_file_name', workspace='demo')
+    
+
+    try:
+        geo.get_style(style_name="pointa", workspace=settings.GEOSERVER_WORKSPACE)
+    except:
+        geo.upload_style(path=r'path\to\sld\file.sld', workspace=settings.GEOSERVER_WORKSPACE)
+
+    print()
+
+    return ""
+```
 ## Informações necessárias
 
 ### Criar o pdf com dicinário de dados :rocket:
@@ -37,6 +61,13 @@
     - Informações do SLD
 
 #### Geonetwork
+
+[exemplo python](https://docs.geonetwork-opensource.org/3.12/api/the-geonetwork-api/#connecting-to-the-api-with-python)
+
+[api](https://www.geocat.ch/geonetwork/doc/api/index.html)
+
+
+- [api deonetwork](https://catalog.iocasta.com.br/doc/api/index.html)
 
 - Enviar XML
 - Ajustar o Geoserver com o id do geonetwork

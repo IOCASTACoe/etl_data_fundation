@@ -17,12 +17,20 @@ GEOSERVER_PASSWORD:str = 'geoserver'
 GEOSERVER_WORKSPACE:str = 'gold'
 
 
+
+GEONETWORK_URL:str = 'https://catalog.iocasta.com.br'
+GEONETWORK_USER:str = 'admin'
+GEONETWORK_PASSWORD:str = 'admin'
+
+
+
+
+
+
 # TODO colocar pathlib
 
 """
 /home/vscode/data/new/file/BIO/especies_ameacadas/20240101/00/md_bio_sp_end_20240101.xml
-
-
 
 <gmd:dataQualityInfo>
     <gmd:DQ_DataQuality>
@@ -33,6 +41,6 @@ GEOSERVER_WORKSPACE:str = 'gold'
               <gmd:description>
 
 
-".//gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gco:description"
+.//gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gco:description
 
 """

@@ -1,5 +1,5 @@
 import logging
-from src.lib.loggin import setup_logging
+from src.library.loggin import setup_logging
 import config.config as settings
 import jinja2
 from pandas import read_excel
@@ -10,7 +10,9 @@ from osgeo import gdal
 import glob
 import pathlib
 from geo.Geoserver import DataProvider, Geoserver
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET 
+from soduco_geonetwork import  api_wrapper
+
 
 logger = logging.getLogger(__name__)
 
@@ -25,20 +27,15 @@ def read_excel_file(file_path: str) -> list[dict]:
         record: dict = {"desc": item["Description"], "name": item["Name"]}
         lst.append(record)
 
-
-
 def get_geopackage(dir_path: str) -> str:
     pass
-
 
 def get_path(midle_path: str) -> str:
     return pathlib.Path(settings.BASE_PATH, midle_path).__str__()
 
-
 def find_files_with_extension_glob(directory, extension):
     pattern = os.path.join(directory, f"*{extension}")
     return glob.glob(pattern)
-
 
 def valid_files(dir_path: str, extension: str) -> pathlib:
     for ext in settings.VALID_FILES:
@@ -54,9 +51,6 @@ def valid_files(dir_path: str, extension: str) -> pathlib:
         file_path: pathlib = pathlib.Path(result[0])
 
     return file_path
-
-
-
 
 def build_final_attributes(file_path: str, comments: dict) -> list[dict]:
     ds = ogr.Open(file_path, gdal.GA_Update)
@@ -88,7 +82,6 @@ def build_final_attributes(file_path: str, comments: dict) -> list[dict]:
     schema.append(record)
     return schema
 
-
 def get_xlsx_rows(file_path: str) -> dict:
     logger.info(f"Processing Excel file: {file_path}")
 
@@ -100,7 +93,6 @@ def get_xlsx_rows(file_path: str) -> dict:
             raise ValueError(f"Invalid keys in the Excel file: {file_path}")
         lst[item["Name"]] = item["Description"]
     return lst
-
 
 def render_html(values:list[dict], name:str, abstract:str) -> str: 
 
@@ -127,30 +119,22 @@ def render_html(values:list[dict], name:str, abstract:str) -> str:
 
     return html_path
 
-
-def upload_sld_to_geoserver(file:str) -> str:
-
-    """
-    geo = Geoserver(
-        service_url=settings.GEOSERVER_URL,
-        username=settings.GEOSERVER_USER,
+def send_xml_geonetwork(file_path: str):
+    # Initialize the GeoNetwork client
+    client = api_wrapper(
+        url=settings.GEONETWORK_URL,
+        username=settings.GEONETWORK_USER,
         password=settings.GEOSERVER_PASSWORD
     )
-    styles = geo.get_styles()
-    geo.upload_style(path=r'path\to\sld\file.sld', workspace='demo')
-    geo.publish_style(layer_name='geoserver_layer_name', style_name='sld_file_name', workspace='demo')
-    geo.publish_style(layer_name='geoserver_layer_name', style_name='raster_file_name', workspace='demo')
-    
 
-    try:
-        geo.get_style(style_name="pointa", workspace=settings.GEOSERVER_WORKSPACE)
-    except:
-        geo.upload_style(path=r'path\to\sld\file.sld', workspace=settings.GEOSERVER_WORKSPACE)
+    # Upload the XML metadata file
+    response = client.upload_metadata(file_path)
 
-    print()
-    """
-    return ""
-
+    # Check the response
+    if response.status_code == 201:
+        print('Metadata uploaded successfully!')
+    else:
+        print('Failed to upload metadata:', response.content)
 
 def html2pdf(html_path:str) -> str:
     options = {
@@ -230,6 +214,9 @@ class HandleXML:
             self.record["category_acronym"] = (
                 category_acronym_elements[0].text if title_elements else ""
             )
+            # TODO Ajustar
+            self.record["sta_date"] = "error"
+            self.record["end_date"] = "error"
 
     def _read_gmd_xml(self, file_path):
 
@@ -249,7 +236,40 @@ class HandleXML:
             namespaces = {}
         return root.findall(xpath, namespaces)
 
+def publiblish_geoserver(file_path:str,
+                         title:str,
+                         theme:str,
+                         abstract:str,
+                         cat_acronym:str,
+                         sta_date:str,
+                         end_date:str) -> None:
 
+    geo = Geoserver(
+        service_url=settings.GEOSERVER_URL,
+        username=settings.GEOSERVER_USER,
+        password=settings.GEOSERVER_PASSWORD
+    )
+
+    geo.create_gpkg_datastore(path=file_path,
+                                store_name=title, 
+                                workspace=settings.GEOSERVER_WORKSPACE)
+    
+    col = geo.get_featuretypes(workspace=settings.GEOSERVER_WORKSPACE,
+                         store_name=title
+                         )
+    name = col[0]
+
+    geo.edit_featuretype(recalculate="nativebbox,latlonbbox", 
+                         store_name=title,
+                         workspace=settings.GEOSERVER_WORKSPACE, 
+                         pg_table= name, 
+                         name=name,
+                         title=theme, 
+                         abstract=abstract,
+                         keywords=[{"start_date":sta_date}, 
+                                   {"end_date":end_date},
+                                   {"cat_acronym":cat_acronym}]
+                                   )
 
 
 if __name__ == "__main__":
@@ -267,9 +287,23 @@ if __name__ == "__main__":
     obj_xml = HandleXML(xml_file_full_path.__str__())
     record:dict = obj_xml.record
 
+    """ Publish Geonetwork """
+    send_xml_geonetwork(xml_file_full_path.__str__())
+
+    """Publish Geoserver"""
+    geo_package_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".gpkg")
+    publiblish_geoserver(file_path=geo_package_file_full_path,
+                         title=record["title"],
+                         theme=record["theme"],
+                         abstract=record["abstract"],
+                         cat_acronym=record["abstract"],
+                         sta_date=record["sta_date"],
+                         end_date=record["end_date"])
 
 
-    """ Excel data dictctonary """
+
+
+    """ Excel data dictitionary """
     excel_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".xlsx")
     data_dict: dict = get_xlsx_rows(excel_file_full_path.__str__())
 
@@ -286,7 +320,7 @@ if __name__ == "__main__":
 
     """ Get sld data"""
     sld_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".sld")
-    upload_sld_to_geoserver(sld_file_full_path.__str__())
+    #upload_sld_to_geoserver(sld_file_full_path.__str__())
 
 
 
