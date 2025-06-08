@@ -16,15 +16,10 @@ GEOSERVER_USER:str = 'admin'
 GEOSERVER_PASSWORD:str = 'geoserver'
 GEOSERVER_WORKSPACE:str = 'gold'
 
-
-
-GEONETWORK_URL:str = 'https://catalog.iocasta.com.br'
-GEONETWORK_USER:str = 'admin'
+GEONETWORK_SERVER:str = 'https://catalog.iocasta.com.br'
+GEONETWORK_USERNAME:str = 'admin'
 GEONETWORK_PASSWORD:str = 'admin'
-
-
-
-
+GEONETWORK_AUTH_URL = GEONETWORK_SERVER + "/srv/eng/info?type=me"
 
 
 # TODO colocar pathlib

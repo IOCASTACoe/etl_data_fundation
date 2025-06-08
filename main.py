@@ -11,8 +11,7 @@ import glob
 import pathlib
 from geo.Geoserver import DataProvider, Geoserver
 import xml.etree.ElementTree as ET 
-from soduco_geonetwork import  api_wrapper
-
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -118,23 +117,6 @@ def render_html(values:list[dict], name:str, abstract:str) -> str:
     html_file.close()
 
     return html_path
-
-def send_xml_geonetwork(file_path: str):
-    # Initialize the GeoNetwork client
-    client = api_wrapper(
-        url=settings.GEONETWORK_URL,
-        username=settings.GEONETWORK_USER,
-        password=settings.GEOSERVER_PASSWORD
-    )
-
-    # Upload the XML metadata file
-    response = client.upload_metadata(file_path)
-
-    # Check the response
-    if response.status_code == 201:
-        print('Metadata uploaded successfully!')
-    else:
-        print('Failed to upload metadata:', response.content)
 
 def html2pdf(html_path:str) -> str:
     options = {
@@ -242,7 +224,8 @@ def publiblish_geoserver(file_path:str,
                          abstract:str,
                          cat_acronym:str,
                          sta_date:str,
-                         end_date:str) -> None:
+                         end_date:str,
+                         id:str) -> None:
 
     geo = Geoserver(
         service_url=settings.GEOSERVER_URL,
@@ -268,8 +251,73 @@ def publiblish_geoserver(file_path:str,
                          abstract=abstract,
                          keywords=[{"start_date":sta_date}, 
                                    {"end_date":end_date},
-                                   {"cat_acronym":cat_acronym}]
+                                   {"cat_acronym":cat_acronym},
+                                   {'id':id}]
                                    )
+
+
+
+
+
+
+
+def upload_xml_geonetwork(file_path:str) -> str:
+
+    session = requests.Session()
+    response = session.post(settings.GEONETWORK_AUTH_URL)
+
+    xsrf_token = response.cookies.get("XSRF-TOKEN")
+    if xsrf_token:
+        print("The XSRF Token is:", xsrf_token)
+    else:
+        print("Unable to find the XSRF token")
+
+    headers = {"Accept": "application/json", "X-XSRF-TOKEN": xsrf_token}
+
+    headers = {
+        "Accept": "application/json",
+        "X-XSRF-TOKEN": xsrf_token,
+        "Cache-Control": "no-cache",
+        "boundary": "7617295b-9851-4b35-963e-cb0488cda4a7",
+    }
+
+    params = {
+        "metadataType": "METADATA",
+        "uuidProcessing": "GENERATEUUID",
+        "group": "",
+        "category": "",
+        "rejectIfInvalid": False,
+        "publishToAll": True,
+        "assignToCatalog": True,
+        "transformWith": "_none_",
+        "allowEditGroupM": True,
+    }
+
+
+    response = session.post(
+        settings.GEONETWORK_SERVER + "/srv/api/records",
+        params=params,
+        files={
+            "file": open(
+                file=file_path, mode="r", encoding="utf-8"
+            )
+        },
+        auth=(settings.GEONETWORK_USERNAME, settings.GEONETWORK_PASSWORD),
+        headers=headers,
+    )
+
+    uuid: str = response.json()["uuid"]
+
+    return uuid
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -288,7 +336,7 @@ if __name__ == "__main__":
     record:dict = obj_xml.record
 
     """ Publish Geonetwork """
-    send_xml_geonetwork(xml_file_full_path.__str__())
+    uuid:str = upload_xml_geonetwork(xml_file_full_path.__str__())
 
     """Publish Geoserver"""
     geo_package_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".gpkg")
@@ -298,10 +346,8 @@ if __name__ == "__main__":
                          abstract=record["abstract"],
                          cat_acronym=record["abstract"],
                          sta_date=record["sta_date"],
-                         end_date=record["end_date"])
-
-
-
+                         end_date=record["end_date"],
+                         id=uuid)
 
     """ Excel data dictitionary """
     excel_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".xlsx")
