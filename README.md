@@ -2,6 +2,26 @@
 
 # ETL Silver to Gold
 
+```sh
+curl -X 'POST' \
+  'http://127.0.0.1:8000/uploadfiles/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data'   \
+  -F 'files=@dd_bio_sp_end_20240101.xlsx' \
+  -F 'files=@pnt_bio_sp_end_20240101.gpkg'\
+  -F 'files=@sld_bio_sp_end_20240101.sld' \
+  -F 'files=@md_bio_sp_end_20240101.xml'
+```
+
+```sh
+ curl -X 'POST'   'http://127.0.0.1:8000/uploadfiles/' 
+ -H 'accept: application/json' 
+ -H 'Content-Type: multipart/form-data' 
+ -F 'files=@dd_bio_sp_end_20240101.xlsx' 
+ -F 'files=@pnt_bio_sp_end_20240101.gpkg'   
+ -F 'files=@sld_bio_sp_end_20240101.sld' 
+ -F 'files=@md_bio_sp_end_20240101.xml' 
+```
 
 ```python
 def upload_sld_to_geoserver(file:str) -> str:
@@ -26,6 +46,7 @@ def upload_sld_to_geoserver(file:str) -> str:
 
     return ""
 ```
+
 ## Informações necessárias
 
 ### Criar o pdf com dicinário de dados :rocket:
@@ -44,9 +65,9 @@ def upload_sld_to_geoserver(file:str) -> str:
 
 #### Geoserver
 
-- Feature store:
+- Feature store: :white_check_mark:
 
-- Extrair do XML  :white_check_mark:
+- Extrair do XML  :white_check_mark: :white_check_mark:
   - Inicio
   - Termino
   - Termino
@@ -56,9 +77,17 @@ def upload_sld_to_geoserver(file:str) -> str:
   - category_aconym
 
 - Criar a datastore
-  - Atalizar do featurestore com
-    - Informações do XML
-    - Informações do SLD
+  - Atalizar do featurestore com  :white_check_mark:
+    - Informações do XML :white_check_mark:
+    - Informações do SLD :white_check_mark:
+
+- REST API
+  - Endpoint envio arquivos
+  - Endpoint visualização formulário
+
+
+
+
 
 #### Geonetwork
 

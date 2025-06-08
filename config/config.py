@@ -1,6 +1,6 @@
 
 
-BASE_PATH:str = "/home/vscode/data/new/file"
+BASE_PATH:str = "/workspaces/etl_data_fundation/temp_files"
 # BASE_PATH:str = "/home/vscode/data/input"
 
 VALID_FILES:tuple = [".gpkg",".xml",".xlsx"]

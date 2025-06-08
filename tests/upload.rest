@@ -1,0 +1,11 @@
+GET http://127.0.0.1:8000/uploadfiles HTTP/1.1
+Content-Type: multipart/form-data
+-F files=@/workspaces/etl_data_fundation/logs/20250606-23:42:08.log' 
+-F files=@/workspaces/etl_data_fundation/logs/20250606-23:42:08.log 
+
+curl -X 'POST' \
+  'http://127.0.0.1:8000/uploadfiles/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'files=@20250606-23:42:08.log' \
+  -F 'files=@20250606-23:41:13.log' 
