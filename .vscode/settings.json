@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "/workspaces/etl_data_fundation/python3.12",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestEnabled": true
+}

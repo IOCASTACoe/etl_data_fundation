@@ -9,7 +9,7 @@ from osgeo import ogr
 from osgeo import gdal
 import glob
 import pathlib
-from geo.Geoserver import DataProvider, Geoserver
+from geo.Geoserver import Geoserver
 import xml.etree.ElementTree as ET 
 import requests
 import shutil
@@ -17,27 +17,15 @@ import shutil
 logger = logging.getLogger(__name__)
 
 
-def read_excel_file(file_path: str) -> list[dict]:
-    lst = [dict]
-    excel_lst = read_excel(file_path)
-    for item in excel_lst.to_dict(orient="records"):
-        if item.keys() != {"Name", "Description"}:
-            logging.error(f"Invalid keys found in the Excel file: {file_path}")
-            raise ValueError(f"Invalid keys in the Excel file: {file_path}")
-        record: dict = {"desc": item["Description"], "name": item["Name"]}
-        lst.append(record)
-
-def get_geopackage(dir_path: str) -> str:
-    pass
-
 def get_path(midle_path: str) -> str:
     return pathlib.Path(settings.BASE_PATH, midle_path).__str__()
 
-def find_files_with_extension_glob(directory, extension):
+def find_files_with_extension_glob(directory, extension) -> list[str]:
     pattern = os.path.join(directory, f"*{extension}")
     return glob.glob(pattern)
 
-def valid_files(dir_path: str, extension: str) -> pathlib:
+def valid_files(dir_path: str, extension: str) -> pathlib.Path:
+    file_path = pathlib.Path("")
     for ext in settings.VALID_FILES:
         result = find_files_with_extension_glob(directory=dir_path, extension=extension)
         if len(result) > 1:
@@ -48,7 +36,7 @@ def valid_files(dir_path: str, extension: str) -> pathlib:
             raise Exception(
                 f"Não existe arquivos no diretório {dir_path} com a extensão {extension}."
             )
-        file_path: pathlib = pathlib.Path(result[0])
+        file_path = pathlib.Path(result[0])
 
     return file_path
 
@@ -56,7 +44,7 @@ def build_final_attributes(file_path: str, comments: dict) -> list[dict]:
     ds = ogr.Open(file_path, gdal.GA_Update)
     layer = ds.GetLayer(0)
 
-    matrix: dict[str] = dict(str())
+    matrix: dict = dict()
     matrix[ogr.OFTBinary] = "Binary"
     matrix[ogr.OFTDate] = "Date"
     matrix[ogr.OFTDateTime] = "DateTime"
@@ -94,7 +82,7 @@ def get_xlsx_rows(file_path: str) -> dict:
         lst[item["Name"]] = item["Description"]
     return lst
 
-def render_html(values:list[dict], name:str, abstract:str) -> str: 
+def render_html(values:list[dict], name:str, abstract:str) -> pathlib.Path: 
 
     template_loader = jinja2.FileSystemLoader(searchpath=settings.JINJA_SEARCH_PATH)
     template_env = jinja2.Environment(loader=template_loader)
@@ -108,8 +96,6 @@ def render_html(values:list[dict], name:str, abstract:str) -> str:
                         "caption": abstract
                     }
                   
-
-
     output_text = template.render(context=context)
 
     html_path = pathlib.Path(settings.TEMP_FILES, f'{name}.html')
@@ -132,17 +118,17 @@ def html2pdf(html_path:str) -> str:
     }
 
     pdf_path:str = f"{html_path}.pdf"
-    html_path:str = f"{html_path}.html"
-    with open(html_path) as f:
+    final_html_path:str = f"{html_path}.html"
+    with open(final_html_path) as f:
         pdfkit.from_file(f, pdf_path, options=options)
 
-    return html_path
+    return final_html_path
 
 class HandleXML:
 
     record: dict = dict()
 
-    _namespaces: tuple[str] = {
+    _namespaces: dict = {
         "gmd": "http://www.isotc211.org/2005/gmd",
         "gco": "http://www.isotc211.org/2005/gco",
         # Add other namespaces as needed
@@ -243,18 +229,19 @@ def publiblish_geoserver(file_path:str,
                          )
     name = col[0]
 
+    dict_keywords = [{"start_date":sta_date}, 
+                    {"end_date":end_date},
+                    {"cat_acronym":cat_acronym},
+                    {'id':id}]
+
     geo.edit_featuretype(recalculate="nativebbox,latlonbbox", 
-                         store_name=title,
-                         workspace=settings.GEOSERVER_WORKSPACE, 
-                         pg_table= name, 
+                         store_name=title, # type: ignore
+                         workspace=settings.GEOSERVER_WORKSPACE,  # type: ignore
+                         pg_table= name,  # type: ignore
                          name=name,
                          title=theme, 
                          abstract=abstract,
-                         keywords=[{"start_date":sta_date}, 
-                                   {"end_date":end_date},
-                                   {"cat_acronym":cat_acronym},
-                                   {'id':id}]
-                                   )
+                         keywords=dict_keywords) # type: ignore
 
 def upload_xml_geonetwork(file_path:str) -> str:
 
@@ -311,23 +298,24 @@ def main(path:str):
 
     setup_logging()
 
+    logger.info(f"Starting ETL process for path: {path}")
     dir_path: str = get_path(path)
-    get_file_name = find_files_with_extension_glob(directory=dir_path, extension=".gpkg")
-    arquivo: pathlib = valid_files(dir_path=dir_path, extension=".gpkg")
+    arquivo: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
     file_name: str = arquivo.name.replace(".gpkg", "")
+    logger.info(f"Filename to be processed [{file_name}]")
 
-
-    """ Get XML data"""
-    xml_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".xml")
+    logger.info("Get XML data")
+    xml_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xml")
     obj_xml = HandleXML(xml_file_full_path.__str__())
     record:dict = obj_xml.record
+    logger.info("Get XML passed.")
 
-    """ Publish Geonetwork """
+    logger.info("Publish Geonetwork")
     uuid:str = upload_xml_geonetwork(xml_file_full_path.__str__())
 
-    """Publish Geoserver"""
-    geo_package_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".gpkg")
-    publiblish_geoserver(file_path=geo_package_file_full_path,
+    logger.info("Publish Geoserver")
+    geo_package_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
+    publiblish_geoserver(file_path=geo_package_file_full_path.__str__(),
                          title=record["title"],
                          theme=record["theme"],
                          abstract=record["abstract"],
@@ -337,34 +325,28 @@ def main(path:str):
                          id=uuid)
 
 
-    """ Excel data dictitionary """
-    excel_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".xlsx")
+    logger.info("Excel data dictitionary")
+    excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xlsx")
     data_dict: dict = get_xlsx_rows(excel_file_full_path.__str__())
 
-    """ Geopackage Attributes"""
-    excel_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".gpkg")
+    logger.info("Geopackage Attributes")
+    excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
     attibutes:list[dict] = build_final_attributes(excel_file_full_path.__str__(), 
                                        data_dict)
 
 
-    """ Generate PDF file"""
-    html_path:str = render_html(values=attibutes, name=file_name, abstract="fdslsdfsdçfdsfsd")
-    html_path: str = f"{settings.TEMP_FILES}{file_name}"
-    file_to_remove:str = html2pdf(html_path)
+    logger.info("Generate PDF file")
+    html_path:pathlib.Path = render_html(values=attibutes, name=file_name, abstract="fdslsdfsdçfdsfsd")
+    html_path_final: str = f"{settings.TEMP_FILES}{file_name}"
+    file_to_remove:str = html2pdf(html_path_final.__str__())
     os.remove(file_to_remove)
 
 
-    """ Get sld data"""
+    logger.info("Get sld data")
     #sld_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".sld")
     #upload_sld_to_geoserver(sld_file_full_path.__str__())
 
+    logger.info(f"Remove dir: {dir_path}.")
     shutil.rmtree(dir_path)    
 
-    paths: list[str] = [
-        "BIO/importancia_biologica/MMA/20181218/00",
-        "CMA/frequencia_queimadas/MapBiomas/20240618/",
-        "BIO/especies_ameacadas/20240101/00/",
-        "BIO/zona_costeira/IBGE/20240730/00/",
-        "BIO/importancia_biologica/MMA/20181218/00/",
-        "BIO/biomas/IBGE/2004010100/00/",
-    ]
+    logger.info(f"Finish: {file_name}.")
