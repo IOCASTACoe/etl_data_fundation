@@ -9,8 +9,6 @@ ENV POETRY_NO_INTERACTION=1 \
     CPLUS_INCLUDE_PATH=/usr/include/gdal \
     C_INCLUDE_PATH=/usr/include/gdal
 
-
-
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \

@@ -6,6 +6,8 @@
 
 cd /home/vscode/data/new/file/BIO/especies_ameacadas/20240101/00
 
+C:\Temp\dados_silver\silver_data\RESTRICTED\BIO\especies_ameacadas\20240101\00
+
 curl -X 'POST' \
   'http://127.0.0.1:8000/uploadfiles/' \
   -H 'accept: application/json' \
@@ -87,9 +89,6 @@ def upload_sld_to_geoserver(file:str) -> str:
 - REST API
   - Endpoint envio arquivos
   - Endpoint visualização formulário
-
-
-
 
 
 #### Geonetwork

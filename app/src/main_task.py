@@ -1,0 +1,73 @@
+import logging
+import os
+import pathlib
+import shutil
+
+import app.src.config as settings
+from app.src.library.loggin import setup_logging
+from app.src.handle_gpkg import build_final_attributes
+from app.src.handle_xml import HandleXML
+from app.src.handle_xlsx import get_xlsx_rows
+from app.src.publish_dict import html2pdf, render_html
+from app.src.publish_geoserver import publiblish_geoserver
+from app.src.publis_catalog import upload_xml_geonetwork
+from app.src.handle_files import get_path, valid_files
+
+logger = logging.getLogger(__name__)
+
+def main(path:str):
+
+    setup_logging()
+
+    logger.info(f"Starting ETL process for path: {path}")
+    dir_path: str = get_path(path)
+    arquivo: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
+    file_name: str = arquivo.name.replace(".gpkg", "")
+    logger.info(f"Filename to be processed [{file_name}]")
+
+    logger.info("Get XML data")
+    xml_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xml")
+    obj_xml = HandleXML(xml_file_full_path.__str__())
+    record:dict = obj_xml.record
+    logger.info("Get XML passed.")
+
+    logger.info("Publish Geonetwork")
+    uuid:str = upload_xml_geonetwork(xml_file_full_path.__str__())
+
+    logger.info("Publish Geoserver")
+    geo_package_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
+    publiblish_geoserver(file_path=geo_package_file_full_path.__str__(),
+                         title=record["title"],
+                         theme=record["theme"],
+                         abstract=record["abstract"],
+                         cat_acronym=record["abstract"],
+                         sta_date=record["sta_date"],
+                         end_date=record["end_date"],
+                         id=uuid)
+
+
+    logger.info("Excel data dictitionary")
+    excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xlsx")
+    data_dict: dict = get_xlsx_rows(excel_file_full_path.__str__())
+
+    logger.info("Geopackage Attributes")
+    excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
+    attibutes:list[dict] = build_final_attributes(excel_file_full_path.__str__(), 
+                                       data_dict)
+
+
+    logger.info("Generate PDF file")
+    html_path:pathlib.Path = render_html(values=attibutes, name=file_name, abstract="fdslsdfsdçfdsfsd")
+    html_path_final: str = f"{settings.TEMP_FILES}{file_name}"
+    file_to_remove:str = html2pdf(html_path_final.__str__())
+    os.remove(file_to_remove)
+
+
+    logger.info("Get sld data")
+    #sld_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".sld")
+    #upload_sld_to_geoserver(sld_file_full_path.__str__())
+
+    logger.info(f"Remove dir: {dir_path}.")
+    shutil.rmtree(dir_path)    
+
+    logger.info(f"Finish: {file_name}.")

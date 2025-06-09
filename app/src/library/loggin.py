@@ -2,10 +2,12 @@ import logging
 import logging.config
 import os
 from datetime import datetime
-import config.config as settings
+
+from dotenv import dotenv_values, load_dotenv
+import app.src.config as settings
 def setup_logging():
 
-
+    load_dotenv()
     """Load logging configuration"""
     log_configs = {"dev": "logging.dev.ini", "prod": "logging.prod.ini"}
     config = log_configs.get(os.environ["ENV"], "logging.dev.ini")

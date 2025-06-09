@@ -1,16 +1,21 @@
 
 import os
-import uuid 
-import config.config as settings 
-from fastapi import FastAPI, File, UploadFile
+import uuid
 from typing import List
-from main_task import main 
+
+from fastapi import FastAPI, UploadFile
+import os
+from dotenv import dotenv_values, load_dotenv
+
+import app.src.config as settings
+from app.src.main_task import main
 
 app = FastAPI()
 
 @app.get("/")
 def read_root():
     return {"message": "Welcome to FastAPI!"}
+
 
 @app.post("/uploadfiles/")
 async def upload_files(files: List[UploadFile]):
