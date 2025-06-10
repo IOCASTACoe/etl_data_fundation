@@ -9,6 +9,8 @@ ENV POETRY_NO_INTERACTION=1 \
     CPLUS_INCLUDE_PATH=/usr/include/gdal \
     C_INCLUDE_PATH=/usr/include/gdal
 
+RUN apt-get update
+
 RUN apt-get update \
   && apt-get install -y gettext \
   && apt-get install -y build-essential \
@@ -18,15 +20,17 @@ RUN apt-get update \
   && apt-get install -y libpango-1.0-0 \
   && apt-get install -y libharfbuzz0b \
   && apt-get install -y libpangoft2-1.0-0 \
+  && apt-get install -y python3-pip \
+  && apt-get install -y libgdal-dev \
+  && apt-get install -y gdal-bin \
+  && apt-get install -y python3-gdal \
+  && apt-get install -y python3-distutils \
+  && apt-get install -y build-essential  \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-RUN apt-get update
-RUN apt install python3-pip -y 
-RUN apt-get install -y libgdal-dev gdal-bin python3-gdal python3-distutils
-RUN apt-get install build-essential ##This one solves some bugs sometimes
 RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
 RUN export C_INCLUDE_PATH=/usr/include/gdal
 
