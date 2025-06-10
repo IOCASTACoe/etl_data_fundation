@@ -1,5 +1,12 @@
 import os
 from typing import Tuple
+import logging
+
+logger = logging.getLogger(__name__)
+
+ENV: str = "dev"
+
+VALID_FILES: Tuple[str, ...] = (".gpkg", ".xml", ".xlsx")
 
 ##### GEOSERVER
 GEOSERVER_URL:str = 'https://gis.iocasta.com.br/geoserver'
@@ -18,8 +25,9 @@ JINJA_SEARCH_PATH: str = "templates/"
 TEMP_FILES:str = "temp_files/"
 
 def init_dir():
-  for dir_name in [LOG_DIR, TEMP_FILES]
+  for dir_name in [LOG_DIR, TEMP_FILES]:
     if not os.path.isdir(dir_name):
+        logging.info(f"Creating directory {dir_name}")
         os.mkdir(dir_name)
 
 

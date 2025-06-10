@@ -9,7 +9,7 @@ import app.src.config as settings
 logger = logging.getLogger(__name__)
 
 def get_path(midle_path: str) -> str:
-    return pathlib.Path(settings.BASE_PATH, midle_path).__str__()
+    return pathlib.Path(settings.TEMP_FILES, midle_path).__str__()
 
 def find_files_with_extension_glob(directory, extension) -> list[str]:
     pattern = os.path.join(directory, f"*{extension}")
