@@ -1,23 +1,27 @@
-
+import os
 from typing import Tuple
 
-BASE_PATH:str = "/workspaces/etl_data_fundation/temp_files"
-# BASE_PATH:str = "/home/vscode/data/input"
-VALID_FILES: Tuple[str, ...] = (".gpkg", ".xml", ".xlsx")
-CONFIG_DIR = "app/config/"
-LOG_DIR = "./logs"
-JINJA_SEARCH_PATH: str = "./app/templates/"
-TEMP_FILES:str = "./temp_files/"
+##### GEOSERVER
 GEOSERVER_URL:str = 'https://gis.iocasta.com.br/geoserver'
 GEOSERVER_USER:str = 'admin'
 GEOSERVER_PASSWORD:str = 'geoserver'
 GEOSERVER_WORKSPACE:str = 'gold'
+
+##### GEONETWORK
 GEONETWORK_SERVER:str = 'https://catalog.iocasta.com.br'
 GEONETWORK_USERNAME:str = 'admin'
 GEONETWORK_PASSWORD:str = 'admin'
 GEONETWORK_AUTH_URL = GEONETWORK_SERVER + "/srv/eng/info?type=me"
 
-# TODO colocar pathlib
+LOG_DIR:str = "logs/"
+JINJA_SEARCH_PATH: str = "templates/"
+TEMP_FILES:str = "temp_files/"
+
+def init_dir():
+  for dir_name in [LOG_DIR, TEMP_FILES]
+    if not os.path.isdir(dir_name):
+        os.mkdir(dir_name)
+
 
 """
 /home/vscode/data/new/file/BIO/especies_ameacadas/20240101/00/md_bio_sp_end_20240101.xml
