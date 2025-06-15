@@ -4,6 +4,10 @@
 
 ```sh
 
+docker build .
+docker run -d -it -p 7500:80 --name etl_instance  etl_fundation
+
+
 cd /home/vscode/data/new/file/BIO/especies_ameacadas/20240101/00
 
 C:\Temp\dados_silver\silver_data\RESTRICTED\BIO\especies_ameacadas\20240101\00
