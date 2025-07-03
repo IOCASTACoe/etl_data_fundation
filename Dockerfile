@@ -1,6 +1,7 @@
 FROM python:3.12.4
 RUN apt-get upgrade
 
+WORKDIR /app
 
 ENV POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=1 \
@@ -10,6 +11,10 @@ ENV POETRY_NO_INTERACTION=1 \
     C_INCLUDE_PATH=/usr/include/gdal
 
 RUN apt-get update
+
+RUN mkdir -p /app/logs \
+    && mkdir -p /app/temp_files \
+    && mkdir -p /app/templates  
 
 RUN apt-get update \
   && apt-get install -y gettext \
@@ -29,7 +34,7 @@ RUN apt-get update \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+
 
 RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
 RUN export C_INCLUDE_PATH=/usr/include/gdal

@@ -9,13 +9,18 @@ ENV: str = "dev"
 VALID_FILES: Tuple[str, ...] = (".gpkg", ".xml", ".xlsx")
 
 ##### GEOSERVER
-GEOSERVER_URL:str = 'https://gis.iocasta.com.br/geoserver'
+#GEOSERVER_URL:str = 'https://gis.iocasta.com.br/geoserver'
+
+GEOSERVER_URL:str = 'http://cobalto.iocasta.com.br:8080/geoserver'
+
 GEOSERVER_USER:str = 'admin'
 GEOSERVER_PASSWORD:str = 'geoserver'
 GEOSERVER_WORKSPACE:str = 'gold'
 
 ##### GEONETWORK
-GEONETWORK_SERVER:str = 'https://catalog.iocasta.com.br'
+# GEONETWORK_SERVER:str = 'https://catalog.iocasta.com.br'
+
+GEONETWORK_SERVER:str = 'http://cobalto.iocasta.com.br:8081/'
 GEONETWORK_USERNAME:str = 'admin'
 GEONETWORK_PASSWORD:str = 'admin'
 GEONETWORK_AUTH_URL = GEONETWORK_SERVER + "/srv/eng/info?type=me"
