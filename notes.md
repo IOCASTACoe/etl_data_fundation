@@ -4,8 +4,8 @@
 
 ```sh
 
-docker build .
-docker run -d -it -p 7500:80 --name etl_instance  etl_fundation
+docker build . -t etl_app
+docker run -d -it -p 8201:80 --name etl_instance  etl_app
 
 
 cd /home/vscode/data/new/file/BIO/especies_ameacadas/20240101/00
