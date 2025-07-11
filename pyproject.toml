@@ -19,6 +19,7 @@ dependencies = [
     "python-multipart (>=0.0.20,<0.0.21)",
     "dotenv (>=0.9.9,<0.10.0)",
     "gdal (==3.8.4)",
+    "certifi (>=2025.7.9,<2026.0.0)",
 ]
 
 

@@ -58,7 +58,11 @@ class HandleXML:
             self.record["date"] = date_elements[0].text if theme_elements else ""
             self.record["abstract"] = abstract_elements[0].text if quality_elements else ""
             self.record["quality"] = quality_elements[0].text if abstract_elements else ""
-            self.record["theme"] = theme_elements[0].text if date_elements else ""
+            if theme_elements:
+                self.record["theme"] = theme_elements[0].text if date_elements else ""
+            else:
+                self.record["theme"] = "No theme found"
+                logger.error("No theme found in XML file.") 
             self.record["category_acronym"] = (
                 category_acronym_elements[0].text if title_elements else ""
             )

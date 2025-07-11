@@ -1,4 +1,5 @@
 import logging
+import pathlib
 
 import app.src.config as settings
 from geo.Geoserver import Geoserver
@@ -6,6 +7,7 @@ from geo.Geoserver import Geoserver
 logger = logging.getLogger(__name__)
 
 def publiblish_geoserver(file_path:str,
+                         sld_file_full_path:pathlib.Path,
                          title:str,
                          theme:str,
                          abstract:str,
@@ -17,8 +19,14 @@ def publiblish_geoserver(file_path:str,
     geo = Geoserver(
         service_url=settings.GEOSERVER_URL,
         username=settings.GEOSERVER_USER,
-        password=settings.GEOSERVER_PASSWORD
+        password=settings.GEOSERVER_PASSWORD,
     )
+
+    geo.upload_style(path=sld_file_full_path.as_posix(), 
+                    name=sld_file_full_path.stem, 
+                    workspace=settings.GEOSERVER_WORKSPACE, 
+                    sld_version="1.0.0")
+    
 
     geo.create_gpkg_datastore(path=file_path,
                                 store_name=title, 
@@ -42,3 +50,7 @@ def publiblish_geoserver(file_path:str,
                          title=theme, 
                          abstract=abstract,
                          keywords=dict_keywords) # type: ignore
+
+    geo.publish_style(layer_name=name, 
+                      style_name=sld_file_full_path.stem,
+                      workspace=settings.GEOSERVER_WORKSPACE)

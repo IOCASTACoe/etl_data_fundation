@@ -34,9 +34,13 @@ def main(path:str):
     logger.info("Publish Geonetwork")
     uuid:str = upload_xml_geonetwork(xml_file_full_path.__str__())
 
+    logger.info("Get sld data")
+    sld_path:pathlib.Path = valid_files(dir_path=dir_path, extension=".sld")
+
     logger.info("Publish Geoserver")
     geo_package_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
     publiblish_geoserver(file_path=geo_package_file_full_path.__str__(),
+                         sld_file_full_path=sld_path,
                          title=record["title"],
                          theme=record["theme"],
                          abstract=record["abstract"],
@@ -54,8 +58,7 @@ def main(path:str):
     excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
     attibutes:list[dict] = build_final_attributes(excel_file_full_path.__str__(), 
                                        data_dict)
-
-
+    
     logger.info("Generate PDF file")
     html_path:pathlib.Path = render_html(values=attibutes, name=file_name, abstract="fdslsdfsdçfdsfsd")
     html_path_final: str = f"{settings.TEMP_FILES}{file_name}"
@@ -63,9 +66,7 @@ def main(path:str):
     os.remove(file_to_remove)
 
 
-    logger.info("Get sld data")
-    #sld_file_full_path: pathlib = valid_files(dir_path=dir_path, extension=".sld")
-    #upload_sld_to_geoserver(sld_file_full_path.__str__())
+    
 
     logger.info(f"Remove dir: {dir_path}.")
     shutil.rmtree(dir_path)    

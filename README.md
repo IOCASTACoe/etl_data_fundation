@@ -38,3 +38,10 @@ Once the application is running, you can access the API documentation at `http:/
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+
+
+## wkhtmltopdf
+
+```sh
+sudo apt-get install wkhtmltopdf
+```

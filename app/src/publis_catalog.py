@@ -1,4 +1,5 @@
 import logging
+import certifi
 import requests
 
 import app.src.config as settings
@@ -8,7 +9,7 @@ logger = logging.getLogger(__name__)
 def upload_xml_geonetwork(file_path:str) -> str:
 
     session = requests.Session()
-    response = session.post(settings.GEONETWORK_AUTH_URL)
+    response = session.post(settings.GEONETWORK_AUTH_URL, verify=certifi.where())
 
     xsrf_token = response.cookies.get("XSRF-TOKEN")
     if xsrf_token:
@@ -48,6 +49,7 @@ def upload_xml_geonetwork(file_path:str) -> str:
         },
         auth=(settings.GEONETWORK_USERNAME, settings.GEONETWORK_PASSWORD),
         headers=headers,
+        verify=certifi.where(),
     )
 
     z=dict(response.json()['metadataInfos'])    

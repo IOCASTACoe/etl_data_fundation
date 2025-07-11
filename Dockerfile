@@ -9,6 +9,7 @@ ENV POETRY_NO_INTERACTION=1 \
     POETRY_CACHE_DIR=/tmp/poetry_cache \
     CPLUS_INCLUDE_PATH=/usr/include/gdal \
     C_INCLUDE_PATH=/usr/include/gdal
+    
 
 RUN apt-get update
 
@@ -17,6 +18,7 @@ RUN mkdir -p /app/logs \
     && mkdir -p /app/templates  
 
 RUN apt-get update \
+  && apt-get install -y wkhtmltopdf \
   && apt-get install -y gettext \
   && apt-get install -y build-essential \
   && apt-get install -y libpq-dev \

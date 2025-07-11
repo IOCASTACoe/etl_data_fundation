@@ -9,20 +9,22 @@ ENV: str = "dev"
 VALID_FILES: Tuple[str, ...] = (".gpkg", ".xml", ".xlsx")
 
 ##### GEOSERVER
-GEOSERVER_URL:str = 'https://gisdev.iocasta.com.br/geoserver'
+#GEOSERVER_URL:str = 'https://gisdev.iocasta.com.br'
+GEOSERVER_URL:str = 'http://gisdev.iocasta.com.br'
 
 GEOSERVER_USER:str = 'admin'
 GEOSERVER_PASSWORD:str = 'geoserver'
 GEOSERVER_WORKSPACE:str = 'gold'
 
 ##### GEONETWORK
-GEONETWORK_SERVER:str = 'https://catalogdev.iocasta.com.br'
+#GEONETWORK_SERVER:str = 'https://catalogdev.iocasta.com.br'
+GEONETWORK_SERVER:str = 'http://catalogdev.iocasta.com.br'
 GEONETWORK_USERNAME:str = 'admin'
 GEONETWORK_PASSWORD:str = 'admin'
 GEONETWORK_AUTH_URL = GEONETWORK_SERVER + "/srv/eng/info?type=me"
 
 LOG_DIR:str = "logs/"
-JINJA_SEARCH_PATH: str = "templates/"
+JINJA_SEARCH_PATH: str = "app/templates/"
 TEMP_FILES:str = "temp_files/"
 
 def init_dir():
