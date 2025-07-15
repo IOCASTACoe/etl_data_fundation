@@ -1,5 +1,6 @@
 import logging
-import xml.etree.ElementTree as ET 
+import xml.etree.ElementTree as ET
+
 
 logger = logging.getLogger(__name__)
 
@@ -22,8 +23,6 @@ class HandleXML:
 
         if root is not None:
             # Define namespaces (if present in your GMD file)
-
-
 
             title_xpath: str = (
                 ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString"
@@ -87,3 +86,24 @@ class HandleXML:
         if namespaces is None:
             namespaces = {}
         return root.findall(xpath, namespaces)
+
+    def complete_dictionary(self, file_path: str, attibutes:list[dict]):
+
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+        
+        title_elements = root.findall(".//data_dictionary/field")
+
+        for field in title_elements:
+
+            attr_type = "None"
+            col = [x for x in attibutes if x['name'] == field.find('name').text]
+            if col:
+                 attr_type = col[0]['type']
+
+            el = ET.Element("type")
+            el.text = attr_type
+            print(attr_type)
+            field.append(el)
+
+        ET.ElementTree(root).write(file_path, encoding="utf-8", xml_declaration=True)

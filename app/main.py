@@ -34,3 +34,8 @@ async def create_upload_file(file: UploadFile):
     with open(f"{settings.TEMP_FILES}{file.filename}", "wb") as f:
         f.write(await file.read())
     return {"filename": file.filename}
+
+
+@app.post("/get_data_dict/")
+async def get_data_dict(key: str):
+    return "OK"

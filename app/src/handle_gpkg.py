@@ -6,8 +6,8 @@ from osgeo import ogr
 
 logger = logging.getLogger(__name__)
 
-def build_final_attributes(file_path: str, comments: dict) -> list[dict]:
-    ds = ogr.Open(file_path, gdal.GA_Update)
+def get_gpkg_attributes(gpk_file_path: str) -> list[dict]:
+    ds = ogr.Open(gpk_file_path, gdal.GA_Update)
     layer = ds.GetLayer(0)
 
     matrix: dict = dict()
@@ -24,14 +24,12 @@ def build_final_attributes(file_path: str, comments: dict) -> list[dict]:
     ldefn = layer.GetLayerDefn()
     for n in range(ldefn.GetFieldCount()):
         fdefn = ldefn.GetFieldDefn(n)
+        
+
         record = {
             "name": fdefn.name,
-            "type": matrix[fdefn.type],
-             # "width": fdefn.width,
-            "comment": comments[fdefn.name],
+            "type": fdefn.GetTypeName(),
         }
         schema.append(record)
     
-    record = {"name": layer.GetGeometryColumn(), "type":ogr.GeometryTypeToName(layer.GetGeomType()), "comment": str(layer.GetSpatialRef())}
-    schema.append(record)
     return schema
