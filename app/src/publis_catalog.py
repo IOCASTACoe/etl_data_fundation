@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 def upload_xml_geonetwork(file_path:str) -> str:
 
     session = requests.Session()
-    response = session.post(settings.GEONETWORK_AUTH_URL, verify=certifi.where())
+    response = session.post(settings.GEONETWORK_AUTH_URL)
 
     xsrf_token = response.cookies.get("XSRF-TOKEN")
     if xsrf_token:
@@ -52,6 +52,9 @@ def upload_xml_geonetwork(file_path:str) -> str:
         verify=certifi.where(),
     )
 
+    if response.status_code != 201:
+        logger.error(f"Error uploading XML to Geonetwork: {response.text}")
+        raise Exception(f"Error uploading XML to Geonetwork: {response.text}")
     z=dict(response.json()['metadataInfos'])    
     uuid: str = z[[x for x in z][0]][0]['uuid']
 

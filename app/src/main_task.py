@@ -27,11 +27,15 @@ def main(path:str):
     logger.info("Geopackage Attributes")
     excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
     attibutes:list[dict] = get_gpkg_attributes(excel_file_full_path.__str__())
-    
+
+        
     logger.info("Get XML data")
     xml_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xml")
     obj_xml = HandleXML(xml_file_full_path.__str__())
     obj_xml.complete_dictionary(xml_file_full_path.__str__(), attibutes)
+    if len(obj_xml.erros) >0:
+        logger.error(f"Errors found in XML: {obj_xml.get_erros()}")
+        raise Exception(f"Errors found in XML: {obj_xml.get_erros()}")  
     record:dict = obj_xml.record
     logger.info("Get XML passed.")
 
@@ -48,7 +52,7 @@ def main(path:str):
                          title=record["title"],
                          theme=record["theme"],
                          abstract=record["abstract"],
-                         cat_acronym=record["abstract"],
+                         cat_acronym=record["category_acronym"],
                          sta_date=record["sta_date"],
                          end_date=record["end_date"],
                          id=uuid)
@@ -58,3 +62,4 @@ def main(path:str):
     shutil.rmtree(dir_path)    
 
     logger.info(f"Finish: {file_name}.")
+

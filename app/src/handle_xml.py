@@ -16,58 +16,95 @@ class HandleXML:
 
     def __init__(self, file_path: str):
 
-
         logger.info(f"Processing XML file: {file_path}")
 
         root = self._read_gmd_xml(file_path)
 
+        self.erros = []
+
         if root is not None:
-            # Define namespaces (if present in your GMD file)
 
-            title_xpath: str = (
-                ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString"
-            )
-            date_xpath: str = (
-                ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation//gmd:date/gmd:CI_Date/gmd:date/gco:DateTime"
-            )
-            abstract_xpath: str = (
-                ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString"
-            )
-            quality_xpath: str = (
-                ".//gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep/gmd:description/gco:CharacterString"
-            )
+            try:
+                title_xpath: str = (
+                    ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/gco:CharacterString"
+                )
+                title_elements = self._extract_gmd_data(root, title_xpath, self._namespaces)
+                self.record["title"] = (title_elements[0].text)
+            except IndexError:
+                logger.error("Title element not found in XML.")
+                self.erros.append("No title found")
 
-            # Example: Extracting title and abstract
-            title_elements = self._extract_gmd_data(root, title_xpath, self._namespaces)
-            date_elements = self._extract_gmd_data(root, date_xpath, self._namespaces)
-            abstract_elements = self._extract_gmd_data(
-                root, abstract_xpath, self._namespaces
-            )
-            quality_elements = self._extract_gmd_data(
-                root, quality_xpath, self._namespaces
-            )
-            theme_elements = root.findall("./SupplementaryFiles/Theme")
-            category_acronym_elements = root.findall(
-                "./SupplementaryFiles/CategoryAcronym"
-            )
+            try:
+                language_xpath: str = (
+                    ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:language/gmd:LanguageCode"
+                )
+                language_elements = self._extract_gmd_data(root, language_xpath, self._namespaces)
+                self.record["language"] = language_elements[0].text
+            except IndexError:
+                logger.error("Language element not found in XML.")
+                self.erros.append("No language found")
 
-            self.record["title"] = (
-                title_elements[0].text if category_acronym_elements else ""
-            )
-            self.record["date"] = date_elements[0].text if theme_elements else ""
-            self.record["abstract"] = abstract_elements[0].text if quality_elements else ""
-            self.record["quality"] = quality_elements[0].text if abstract_elements else ""
-            if theme_elements:
-                self.record["theme"] = theme_elements[0].text if date_elements else ""
-            else:
-                self.record["theme"] = "No theme found"
-                logger.error("No theme found in XML file.") 
-            self.record["category_acronym"] = (
-                category_acronym_elements[0].text if title_elements else ""
-            )
-            # TODO Ajustar
-            self.record["sta_date"] = "error"
-            self.record["end_date"] = "error"
+            try:
+                date_xpath: str = (
+                    ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation//gmd:date/gmd:CI_Date/gmd:date/gco:DateTime"
+                )
+                date_elements = self._extract_gmd_data(root, date_xpath, self._namespaces)
+                self.record["date"] = date_elements[0].text
+            except IndexError:
+                logger.error("Date element not found in XML.")
+                self.erros.append("No date found")
+
+            try:
+                abstract_xpath: str = (
+                    ".//gmd:identificationInfo/gmd:MD_DataIdentification/gmd:abstract/gco:CharacterString"
+                )
+                abstract_elements = self._extract_gmd_data(root, abstract_xpath, self._namespaces)
+                self.record["abstract"] = abstract_elements[0].text
+            except IndexError:
+                logger.error("Abstract element not found in XML.")
+                self.erros.append("No abstract found")
+
+            try:
+                quality_xpath: str = (
+                    ".//gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep/gmd:description/gco:CharacterString"
+                )
+                quality_elements = self._extract_gmd_data(root, quality_xpath, self._namespaces)
+                self.record["quality"] = quality_elements[0].text
+            except IndexError:
+                logger.error("Quality element not found in XML.")
+                self.erros.append("No quality found")
+
+            try:
+                theme_elements = root.findall(".//SupplementaryFiles/Theme")
+                self.record["theme"] = theme_elements[0].text
+            except IndexError:
+                logger.error("Theme element not found in XML.")
+                self.erros.append("No theme found")
+
+            try:
+                category_acronym_elements = root.findall(".//SupplementaryFiles/CategoryAcronym")
+                self.record["category_acronym"] = category_acronym_elements[0].text
+            except IndexError:
+                logger.error("Category acronym element not found in XML.")
+                self.erros.append("No category acronym found")
+
+            try:
+                extent_xpath: str = (".//gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent")
+                self.record["sta_date"] = self._extract_gmd_data(root, extent_xpath, self._namespaces)[0][0][0].text
+                self.record["end_date"] = self._extract_gmd_data(root, extent_xpath, self._namespaces)[0][0][1].text
+            except IndexError:
+                logger.error("Start date element not found in XML.")
+                self.erros.append("No start date found")
+        else:
+            logger.error("Failed to read XML file or no root element found.")
+            self.erros.append("Failed to read XML file or no root element found.")
+            self.record = {}
+
+    def get_erros(self) -> str:
+        if len(self.erros) > 0:
+            result = (f"Errors found: {', '.join(self.erros)}")
+        return result
+                
 
     def _read_gmd_xml(self, file_path):
 

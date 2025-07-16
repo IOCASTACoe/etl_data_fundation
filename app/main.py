@@ -24,8 +24,11 @@ async def upload_files(files: List[UploadFile] = File(...)):
         
         with open(f"{directory_path}/{file.filename}", "wb") as f:
             f.write(contents)
-
-    main(main_path)
+    try:
+        main(main_path)
+    except Exception as e:
+        return {"error": str(e)}
+    
     return {"filenames": [file.filename for file in files]}
 
 
