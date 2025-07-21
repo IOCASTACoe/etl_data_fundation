@@ -10,7 +10,8 @@ VALID_FILES: Tuple[str, ...] = (".gpkg", ".xml", ".xlsx")
 
 ##### GEOSERVER
 #GEOSERVER_URL:str = 'https://gisdev.iocasta.com.br'
-GEOSERVER_URL:str = 'http://gisdev.iocasta.com.br'
+#GEOSERVER_URL:str = 'http://gisdev.iocasta.com.br'
+GEOSERVER_URL:str = "http://cobalto.iocasta.com.br:8080/geoserver"
 
 GEOSERVER_USER:str = 'admin'
 GEOSERVER_PASSWORD:str = 'geoserver'

@@ -1,10 +1,14 @@
+import json
 import logging
 import pathlib
 
 import app.src.config as settings
 from geo.Geoserver import Geoserver
+from app.src.coverages import modify_layer
+
 
 logger = logging.getLogger(__name__)
+
 
 def publiblish_geoserver(file_path:str,
                          sld_file_full_path:pathlib.Path,
@@ -14,43 +18,89 @@ def publiblish_geoserver(file_path:str,
                          cat_acronym:str,
                          sta_date:str,
                          end_date:str,
-                         id:str) -> None:
+                         id:str,
+                         id_layer:str,
+                         sufixo:str) -> None:
 
     geo = Geoserver(
         service_url=settings.GEOSERVER_URL,
         username=settings.GEOSERVER_USER,
         password=settings.GEOSERVER_PASSWORD,
-    )
+    )    
 
-    geo.upload_style(path=sld_file_full_path.as_posix(), 
-                    name=sld_file_full_path.stem, 
-                    workspace=settings.GEOSERVER_WORKSPACE, 
-                    sld_version="1.0.0")
+    path = file_path
+
+    keys = ["start_date","end_date","cat_acronym","id"]
+    values = [sta_date,end_date,cat_acronym,id]
+    dict_keywords = "|".join([f"{k}:{v}" for k,v in zip(keys, values)])
+
     
 
-    geo.create_gpkg_datastore(path=file_path,
-                                store_name=title, 
-                                workspace=settings.GEOSERVER_WORKSPACE)
+
+    attributes = {"abstract": abstract
+                  ,"title": title
+                 ,"keywords": dict_keywords
+                 ,"theme": theme
+                 ,"defaultStyle": {"name": "raster"}
+                 ,"sld_name": sld_file_full_path.stem
+                 }
+
     
-    col = geo.get_featuretypes(workspace=settings.GEOSERVER_WORKSPACE,
-                         store_name=title
-                         )
-    name = col[0]
+    is_coverage = sufixo == ".tif"
 
-    dict_keywords = [{"start_date":sta_date}, 
-                    {"end_date":end_date},
-                    {"cat_acronym":cat_acronym},
-                    {'id':id}]
+    if is_coverage:
+        geo.create_coveragestore(path=path,
+                                workspace=settings.GEOSERVER_WORKSPACE,
+                                layer_name=id_layer)
+        
+    else:
+    
+        geo.create_gpkg_datastore(path=path,                                  
+                                 store_name=id_layer, 
+                                 workspace=settings.GEOSERVER_WORKSPACE)
+        
+                                 
+        geo.edit_featuretype(recalculate="nativebbox,latlonbbox", 
+                        store_name=id_layer,
+                        workspace=settings.GEOSERVER_WORKSPACE,  # type: ignore
+                        pg_table= id_layer,  # type: ignore
+                        name=id_layer,
+                        title=title,                          
+                        abstract=abstract)
+        
 
+
+    # TODO: Check if the SLD file for raster
+    if not is_coverage:
+        sld_name = sld_file_full_path.stem
+        geo.upload_style(path=sld_file_full_path.as_posix().__str__(),
+                        name=sld_name, 
+                        workspace=settings.GEOSERVER_WORKSPACE, 
+                        sld_version="1.1.0")
+
+        geo.publish_style(layer_name=id_layer, 
+                        style_name=sld_name,
+                        workspace=settings.GEOSERVER_WORKSPACE)
+
+    
+
+
+    modify_layer(layer=id_layer, attributes=attributes, is_coverage=is_coverage)
+
+
+    
+
+
+    
+    """
     geo.edit_featuretype(recalculate="nativebbox,latlonbbox", 
-                         store_name=title, # type: ignore
+                         store_name=id, # type: ignore'
                          workspace=settings.GEOSERVER_WORKSPACE,  # type: ignore
                          pg_table= name,  # type: ignore
                          name=name,
-                         title=theme, 
+                         title=theme,                          
                          abstract=abstract,
                          keywords=dict_keywords) # type: ignore
+    """
 
-    geo.publish_style(layer_name=name, 
-                      style_name=sld_file_full_path.stem,
-                      workspace=settings.GEOSERVER_WORKSPACE)
+    

@@ -6,6 +6,37 @@ import app.src.config as settings
 
 logger = logging.getLogger(__name__)
 
+def delete_record(record_id: str) -> None:
+    """
+    Deletes a record from Geonetwork by its UUID.
+    """
+    session = requests.Session()
+    response = session.post(settings.GEONETWORK_AUTH_URL)
+
+    xsrf_token = response.cookies.get("XSRF-TOKEN")
+    if xsrf_token:
+        logger.info("The XSRF Token is: %s", xsrf_token)
+    else:
+        logger.error("Unable to find the XSRF token")
+
+    headers = {
+        "Accept": "application/json",
+        "X-XSRF-TOKEN": xsrf_token,
+        "Cache-Control": "no-cache",
+    }
+
+    response = session.delete(
+        f"{settings.GEONETWORK_SERVER}/srv/api/records/{record_id}",
+        auth=(settings.GEONETWORK_USERNAME, settings.GEONETWORK_PASSWORD),
+        headers=headers,
+        verify=certifi.where(),
+    )
+
+    if response.status_code != 204:
+        logger.error(f"Error deleting record {record_id}: {response.text}")
+        raise Exception(f"Error deleting record {record_id}: {response.text}")
+
+
 def upload_xml_geonetwork(file_path:str) -> str:
 
     session = requests.Session()

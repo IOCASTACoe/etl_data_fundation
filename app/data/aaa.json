@@ -1,0 +1,136 @@
+'{
+    "coverage": {
+        "name": "rst_imb_uso_20230101",
+        "nativeName": "rst_imb_uso_20230101",
+        "namespace": {
+            "name": "gold",
+            "href": "http://cobalto.iocasta.com.br:8080/geoserver/rest/namespaces/gold.json"
+        },
+        "title": "rst_imb_uso_20230101",
+        "description": "Generated from GeoTIFF",
+        "keywords": {
+            "string": [
+                "rst_imb_uso_20230101",
+                "WCS",
+                "GeoTIFF"
+            ]
+        },
+        "nativeCRS": "GEOGCS[\\"WGS 84\\", \\n  DATUM[\\"World Geodetic System 1984\\", \\n    SPHEROID[\\"WGS 84\\", 6378137.0, 298.257223563, AUTHORITY[\\"EPSG\\",\\"7030\\"]], \\n    AUTHORITY[\\"EPSG\\",\\"6326\\"]], \\n  PRIMEM[\\"Greenwich\\", 0.0, AUTHORITY[\\"EPSG\\",\\"8901\\"]], \\n  UNIT[\\"degree\\", 0.017453292519943295], \\n  AXIS[\\"Geodetic longitude\\", EAST], \\n  AXIS[\\"Geodetic latitude\\", NORTH], \\n  AUTHORITY[\\"EPSG\\",\\"4326\\"]]",
+        "srs": "EPSG:4326",
+        "nativeBoundingBox": {
+            "minx": -74.897665634164,
+            "maxx": -33.06105672756441,
+            "miny": -34.86586196488892,
+            "maxy": 7.93742401895168,
+            "crs": "EPSG:4326"
+        },
+        "latLonBoundingBox": {
+            "minx": -74.897665634164,
+            "maxx": -33.06105672756441,
+            "miny": -34.86586196488892,
+            "maxy": 7.93742401895168,
+            "crs": "EPSG:4326"
+        },
+        "projectionPolicy": "REPROJECT_TO_DECLARED",
+        "enabled": true,
+        "advertised": true,
+        "metadata": {
+            "entry": {
+                "@key": "dirName",
+                "$": "rst_imb_uso_20230101_null"
+            }
+        },
+        "store": {
+            "@class": "coverageStore",
+            "name": "gold:rst_imb_uso_20230101",
+            "href": "http://cobalto.iocasta.com.br:8080/geoserver/rest/workspaces/gold/coveragestores/rst_imb_uso_20230101.json"
+        },
+        "serviceConfiguration": false,
+        "simpleConversionEnabled": false,
+        "nativeFormat": "GeoTIFF",
+        "grid": {
+            "@dimension": 2,
+            "range": {
+                "low": "0 0",
+                "high": "155241 158828"
+            },
+            "transform": {
+                "scaleX": "2.694945852358564E-4",
+                "scaleY": "-2.694945852358564E-4",
+                "shearX": 0,
+                "shearY": 0,
+                "translateX": -74.89753088687138,
+                "translateY": 7.937289271659062
+            },
+            "crs": "EPSG:4326"
+        },
+        "supportedFormats": {
+            "string": [
+                "GIF",
+                "PNG",
+                "JPEG",
+                "TIFF",
+                "GEOTIFF",
+                "GeoPackage (mosaic)",
+                "ImageMosaic",
+                "ArcGrid"
+            ]
+        },
+        "interpolationMethods": {
+            "string": [
+                "nearest neighbor",
+                "bilinear",
+                "bicubic"
+            ]
+        },
+        "defaultInterpolationMethod": "nearest neighbor",
+        "dimensions": {
+            "coverageDimension": {
+                "name": "GRAY_INDEX",
+                "description": "GridSampleDimension[-Infinity,Infinity]",
+                "range": {
+                    "min": "-inf",
+                    "max": "inf"
+                },
+                "dimensionType": {
+                    "name": "UNSIGNED_8BITS"
+                }
+            }
+        },
+        "requestSRS": {
+            "string": "EPSG:4326"
+        },
+        "responseSRS": {
+            "string": "EPSG:4326"
+        },
+        "parameters": {
+            "entry": [
+                {
+                    "string": [
+                        "InputTransparentColor",
+                        ""
+                    ]
+                },
+                {
+                    "string": [
+                        "SUGGESTED_TILE_SIZE",
+                        "512,512"
+                    ]
+                },
+                {
+                    "string": [
+                        "Bands",
+                        ""
+                    ]
+                },
+                {
+                    "string": [
+                        "RescalePixels",
+                        true
+                    ]
+                }
+            ]
+        },
+        "nativeCoverageName": "rst_imb_uso_20230101"
+    }
+}'

@@ -18,21 +18,27 @@ def main(path:str):
     setup_logging()
 
     logger.info(f"Starting ETL process for path: {path}")
+    file_type = ".gpkg"
     dir_path: str = get_path(path)
-    arquivo: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
-    file_name: str = arquivo.name.replace(".gpkg", "")
+    try:
+        arquivo: pathlib.Path = valid_files(dir_path=dir_path, extension=file_type)
+    except Exception as e:
+        file_type = ".tif"
+        arquivo: pathlib.Path = valid_files(dir_path=dir_path, extension=file_type)
+    file_name: str = arquivo.name.replace(file_type, "")
     logger.info(f"Filename to be processed [{file_name}]")
 
+    if file_type == ".gpkg":
+        logger.info("Geopackage Attributes")
+        excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
+        attibutes:list[dict] = get_gpkg_attributes(excel_file_full_path.__str__())
 
-    logger.info("Geopackage Attributes")
-    excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
-    attibutes:list[dict] = get_gpkg_attributes(excel_file_full_path.__str__())
 
-        
     logger.info("Get XML data")
     xml_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xml")
     obj_xml = HandleXML(xml_file_full_path.__str__())
-    obj_xml.complete_dictionary(xml_file_full_path.__str__(), attibutes)
+    if file_type == "gpkg":
+        obj_xml.complete_dictionary(xml_file_full_path.__str__(), attibutes)
     if len(obj_xml.erros) >0:
         logger.error(f"Errors found in XML: {obj_xml.get_erros()}")
         raise Exception(f"Errors found in XML: {obj_xml.get_erros()}")  
@@ -46,7 +52,7 @@ def main(path:str):
     sld_path:pathlib.Path = valid_files(dir_path=dir_path, extension=".sld")
 
     logger.info("Publish Geoserver")
-    geo_package_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
+    geo_package_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=file_type)
     publiblish_geoserver(file_path=geo_package_file_full_path.__str__(),
                          sld_file_full_path=sld_path,
                          title=record["title"],
@@ -55,11 +61,13 @@ def main(path:str):
                          cat_acronym=record["category_acronym"],
                          sta_date=record["sta_date"],
                          end_date=record["end_date"],
-                         id=uuid)
+                         id=uuid,
+                         id_layer=geo_package_file_full_path.stem,
+                         sufixo=geo_package_file_full_path.suffix)
     
 
     logger.info(f"Remove dir: {dir_path}.")
-    shutil.rmtree(dir_path)    
+    #shutil.rmtree(dir_path)    
 
     logger.info(f"Finish: {file_name}.")
 

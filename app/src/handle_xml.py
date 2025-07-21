@@ -106,6 +106,8 @@ class HandleXML:
         return result
                 
 
+
+
     def _read_gmd_xml(self, file_path):
 
         try:
@@ -140,7 +142,45 @@ class HandleXML:
 
             el = ET.Element("type")
             el.text = attr_type
-            print(attr_type)
             field.append(el)
+        
+        #ET.ElementTree(root).write(file_path, encoding="utf-8", xml_declaration=True)
 
+    
+    def complete_links(self, file_path: str, lst_links: list[dict]):
+        # Parse the XML file
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+
+        # Extract namespaces from the file
+        namespaces = {node[0]: node[1] for _, node in ET.iterparse(file_path, events=['start-ns'])}
+
+        # Register namespaces to ensure they are preserved
+        for prefix, uri in namespaces.items():
+            ET.register_namespace(prefix, uri)
+
+        # Define the XPath for the link elements
+        link_path = ".//gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions//gmd:MD_DigitalTransferOptions"
+        link_elements = root.findall(link_path, namespaces=namespaces)
+
+        # Add new links
+        for item in lst_links:
+            ns2_CharacterString = ET.Element("gmd:CharacterString")
+            ns0_protocol = ET.Element("gmd:protocol")
+            ns0_protocol.append(ns2_CharacterString)
+
+            ns0_URL = ET.Element("gmd:URL")
+            ns0_URL.text = self.record.get("url", f"{list(item.values())[0]}")
+            ns0_linkage = ET.Element("gmd:linkage")
+            ns0_linkage.append(ns0_URL)
+
+            ns0_CI_OnlineResource = ET.Element("gmd:CI_OnlineResource")
+            ns0_CI_OnlineResource.append(ns0_linkage)
+            ns0_CI_OnlineResource.append(ns0_protocol)
+
+            element = ET.Element("gmd:onLine")
+            element.append(ns0_CI_OnlineResource)
+            ET.SubElement(link_elements[0], "gmd:onLine").append(element)
+
+        # Write the updated XML back to the file
         ET.ElementTree(root).write(file_path, encoding="utf-8", xml_declaration=True)
