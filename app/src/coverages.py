@@ -148,9 +148,9 @@ def delete_layer(workspace:str, layer:str, data_dict: dict):
         raise Exception(f"Failed to delete layer {data_dict['layer_name']}: {str(e)}")
 
     try:
-        delete_data_store(layer=data_dict['store_name'], is_coverage=is_coverage)
+        delete_data_store(layer=layer, is_coverage=is_coverage)
     except Exception as e:
-        raise Exception(f"Failed to delete data store for layer {data_dict['layer_name']}: {str(e)}")
+        raise Exception(f"Failed to delete data store for layer {layer}: {str(e)}")
     
     return f"Layer {layer} deleted successfully from workspace {workspace}."
 

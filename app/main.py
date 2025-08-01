@@ -5,12 +5,15 @@ import uuid
 from typing import List
 
 from fastapi import FastAPI, UploadFile, File, Response
+from fastapi.responses import HTMLResponse
+
 import os
 from dotenv import dotenv_values, load_dotenv
 
 import app.src.config as settings
 from app.src.main_task import main
 from app.src.coverages import delete_store_layer_style, get_layer
+from app.src.publish_dict import proc_key
 
 
 
@@ -35,16 +38,16 @@ async def upload_files(files: List[UploadFile] = File(...)):
     
     return {"filenames": [file.filename for file in files]}
 
-
-@app.post("/uploadfile/")
-async def create_upload_file(file: UploadFile):
-    with open(f"{settings.TEMP_FILES}{file.filename}", "wb") as f:
-        f.write(await file.read())
-    return {"filename": file.filename}
-
 @app.post("/get_data_dict/")
 async def get_data_dict(key: str):
     saida = get_layer(key)
+    return saida
+
+@app.get("/get_geonetwork_data_dict/", response_class=HTMLResponse)
+async def get_geonetwork_data_dict(key: str):
+    saida = proc_key(key)
+    # 9f14313c-28ff-425c-8e8c-842820211fcd
+
     return saida
 
 @app.delete("/layer/")
@@ -55,3 +58,5 @@ async def delete_layer(key: str):
         return Response(status_code=http.HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))
     
     return Response(status_code=http.HTTPStatus.NO_CONTENT)
+
+

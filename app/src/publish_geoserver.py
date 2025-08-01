@@ -71,16 +71,18 @@ def publiblish_geoserver(file_path:str,
 
 
     # TODO: Check if the SLD file for raster
-    if not is_coverage:
-        sld_name = sld_file_full_path.stem
-        geo.upload_style(path=sld_file_full_path.as_posix().__str__(),
-                        name=sld_name, 
-                        workspace=settings.GEOSERVER_WORKSPACE, 
-                        sld_version="1.1.0")
 
-        geo.publish_style(layer_name=id_layer, 
-                        style_name=sld_name,
-                        workspace=settings.GEOSERVER_WORKSPACE)
+
+
+
+    sld_name = sld_file_full_path.stem
+    geo.upload_style(path=sld_file_full_path.as_posix().__str__(),
+                    name=sld_name, 
+                    workspace=settings.GEOSERVER_WORKSPACE)
+
+    geo.publish_style(layer_name=id_layer, 
+                    style_name=sld_name,
+                    workspace=settings.GEOSERVER_WORKSPACE)
 
     
 

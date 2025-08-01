@@ -144,39 +144,61 @@ class HandleXML:
             el.text = attr_type
             field.append(el)
         
-        #ET.ElementTree(root).write(file_path, encoding="utf-8", xml_declaration=True)
+        ET.ElementTree(root).write(file_path, encoding="utf-8", xml_declaration=True)
+
+     
 
     
     def complete_links(self, file_path: str, lst_links: list[dict]):
         # Parse the XML file
-        tree = ET.parse(file_path)
-        root = tree.getroot()
+        
+        root = self._read_gmd_xml(file_path)
+        
 
         # Extract namespaces from the file
-        namespaces = {node[0]: node[1] for _, node in ET.iterparse(file_path, events=['start-ns'])}
+        # namespaces = {node[0]: node[1] for _, node in ET.iterparse(file_path, events=['start-ns'])}
+
+        namespaces: dict = {
+            "gmd": "http://www.isotc211.org/2005/gmd",
+            "gco": "http://www.isotc211.org/2005/gco",
+            # Add other namespaces as needed
+        }
 
         # Register namespaces to ensure they are preserved
         for prefix, uri in namespaces.items():
             ET.register_namespace(prefix, uri)
 
+
         # Define the XPath for the link elements
         link_path = ".//gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions//gmd:MD_DigitalTransferOptions"
-        link_elements = root.findall(link_path, namespaces=namespaces)
+        link_elements = self._extract_gmd_data(root, link_path, namespaces=namespaces)
+        
 
         # Add new links
         for item in lst_links:
-            ns2_CharacterString = ET.Element("gmd:CharacterString")
+            ns2_CharacterString = ET.Element("gco:CharacterString")
+            ns2_CharacterString.attrib["xmlns:gco"] = "http://www.isotc211.org/2005/gco"
+            ns2_CharacterString.text = item["protocol"]
             ns0_protocol = ET.Element("gmd:protocol")
+            
             ns0_protocol.append(ns2_CharacterString)
 
             ns0_URL = ET.Element("gmd:URL")
-            ns0_URL.text = self.record.get("url", f"{list(item.values())[0]}")
+            ns0_URL.text = item["url"]
             ns0_linkage = ET.Element("gmd:linkage")
             ns0_linkage.append(ns0_URL)
+
+            description_CharacterString = ET.Element("gco:CharacterString")
+            description_CharacterString.attrib["xmlns:gco"] = "http://www.isotc211.org/2005/gco"
+            description_CharacterString.text = item["label"]
+            ns0_description = ET.Element("gmd:description")
+            ns0_description.append(description_CharacterString)
+
 
             ns0_CI_OnlineResource = ET.Element("gmd:CI_OnlineResource")
             ns0_CI_OnlineResource.append(ns0_linkage)
             ns0_CI_OnlineResource.append(ns0_protocol)
+            ns0_CI_OnlineResource.append(ns0_description)
 
             element = ET.Element("gmd:onLine")
             element.append(ns0_CI_OnlineResource)

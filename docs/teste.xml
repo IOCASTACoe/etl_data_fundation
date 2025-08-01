@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gmd:MD_Metadata xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:ns3="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd">
+   <gmd:fileIdentifier>
+      <gco:CharacterString>774e0668-912a-45be-9361-f5685b327a9c</gco:CharacterString>
+   </gmd:fileIdentifier>
+   <gmd:language>
+      <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="por">Portuguese</gmd:LanguageCode>
+   </gmd:language>
+   <gmd:characterSet>
+      <gmd:MD_CharacterSetCode codeListValue="utf8" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode" />
+  </gmd:characterSet>
+   <gmd:hierarchyLevel>
+      <gmd:MD_ScopeCode codeListValue="dataset" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode" />
+   </gmd:hierarchyLevel>
+   <gmd:contact>
+      <gmd:CI_ResponsibleParty>
+         <gmd:organisationName>
+            <gco:CharacterString>OpenStreetMaps</gco:CharacterString>
+         </gmd:organisationName>
+         <gmd:role>
+            <gmd:CI_RoleCode codeListValue="pointOfContact" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" />
+         </gmd:role>
+      </gmd:CI_ResponsibleParty>
+  </gmd:contact>
+   <gmd:dateStamp>
+      <gco:DateTime>2025-07-27T12:40:41.793159Z</gco:DateTime>
+   </gmd:dateStamp>
+   <gmd:spatialRepresentationInfo>
+      <gmd:MD_VectorSpatialRepresentation>
+         <gmd:geometricObjects>
+            <gmd:MD_GeometricObjects>
+               <gmd:geometricObjectType>
+                  <gmd:MD_GeometricObjectTypeCode codeListValue="solid" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_GeometricObjectTypeCode" />
+               </gmd:geometricObjectType>
+            </gmd:MD_GeometricObjects>
+         </gmd:geometricObjects>
+      </gmd:MD_VectorSpatialRepresentation>
+   </gmd:spatialRepresentationInfo>
+   <gmd:referenceSystemInfo>
+      <gmd:MD_ReferenceSystem>
+         <gmd:referenceSystemIdentifier>
+            <gmd:RS_Identifier>
+               <gmd:code>
+                  <gco:CharacterString>4326</gco:CharacterString>
+               </gmd:code>
+            </gmd:RS_Identifier>
+         </gmd:referenceSystemIdentifier>
+      </gmd:MD_ReferenceSystem>
+  </gmd:referenceSystemInfo>
+   <gmd:identificationInfo>
+      <gmd:MD_DataIdentification>
+         <gmd:citation>
+            <gmd:CI_Citation>
+               <gmd:title>
+                  <gco:CharacterString>Rodovias</gco:CharacterString>
+               </gmd:title>
+               <gmd:date>
+                  <gmd:CI_Date>
+                     <gmd:date>
+                        <gco:DateTime>2025-05-23T00:00:00</gco:DateTime>
+                     </gmd:date>
+                     <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeListValue="creation" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" />
+                     </gmd:dateType>
+                  </gmd:CI_Date>
+               </gmd:date>
+            </gmd:CI_Citation>
+         </gmd:citation>
+         <gmd:abstract>
+            <gco:CharacterString>Shapefile elaborado pela AECOM a partir de dados primários do OpenStreetMaps referente as rodovias existentes no território brasileiro</gco:CharacterString>
+         </gmd:abstract>
+         <gmd:graphicOverview>
+            <gmd:MD_BrowseGraphic>
+               <gmd:fileName>
+                  <gco:CharacterString>http://localhost:8080/srv/api/records/4299abfd-f862-4b87-ad96-4cb38f34a888/attachments/Screenshot%202025-03-24%20165346.png</gco:CharacterString>
+               </gmd:fileName>
+            </gmd:MD_BrowseGraphic>
+         </gmd:graphicOverview>
+         <gmd:spatialRepresentationType>
+            <gmd:MD_SpatialRepresentationTypeCode codeListValue="vector" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" />
+         </gmd:spatialRepresentationType>
+         <gmd:language>
+            <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="por">Portuguese</gmd:LanguageCode>
+         </gmd:language>
+         <gmd:extent>
+            <gmd:EX_Extent>
+               <gmd:temporalElement>
+                  <gmd:EX_TemporalExtent>
+                     <gmd:extent>
+                        <ns3:TimePeriod ns3:id="d1887e435a1055006">
+                           <ns3:beginPosition>2025-05-24T00:00:00</ns3:beginPosition>
+                           <ns3:endPosition>2025-05-24T00:00:01</ns3:endPosition>
+                        </ns3:TimePeriod>
+                     </gmd:extent>
+                  </gmd:EX_TemporalExtent>
+               </gmd:temporalElement>
+            </gmd:EX_Extent>
+         </gmd:extent>
+         <gmd:supplementalInformation>
+            <gco:CharacterString>Data in transit</gco:CharacterString>
+         </gmd:supplementalInformation>
+      </gmd:MD_DataIdentification>
+   </gmd:identificationInfo>
+   <gmd:contentInfo>
+      <gmd:MD_FeatureCatalogueDescription>
+         <gmd:complianceCode gco:nilReason="unknown" />
+         <gmd:language>
+            <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="por">Portuguese</gmd:LanguageCode>
+         </gmd:language>
+         <gmd:includedWithDataset gco:nilReason="unknown" />
+         <gmd:featureCatalogueCitation>
+            <gmd:CI_Citation>
+               <gmd:title gco:nilReason="missing">
+                  <gco:CharacterString />
+               </gmd:title>
+               <gmd:date>
+                  <gmd:CI_Date>
+                     <gmd:date>
+                        <gco:Date />
+                     </gmd:date>
+                     <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeListValue="publication" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" />
+                     </gmd:dateType>
+                  </gmd:CI_Date>
+               </gmd:date>
+            </gmd:CI_Citation>
+         </gmd:featureCatalogueCitation>
+      </gmd:MD_FeatureCatalogueDescription>
+   </gmd:contentInfo>
+   <gmd:distributionInfo>
+      <gmd:MD_Distribution>
+         <gmd:distributor>
+            <gmd:MD_Distributor>
+               <gmd:distributorContact />
+               <gmd:distributorFormat />
+               <gmd:distributorTransferOptions>
+                  <gmd:MD_DigitalTransferOptions />
+               </gmd:distributorTransferOptions>
+            </gmd:MD_Distributor>
+         </gmd:distributor>
+         <gmd:transferOptions>
+            <gmd:MD_DigitalTransferOptions><gmd:onLine><gmd:onLine><gmd:CI_OnlineResource><gmd:linkage><gmd:URL>https://cobalto.iocasta.com.br:8080/geoserver/gold/datadict/gold:pl_iwt_rvr_20121217</gmd:URL></gmd:linkage><gmd:protocol><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">WWW:LINK-1.0-http--link</gco:CharacterString></gmd:protocol><gmd:description><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Link para dicionário de dados ou documentação complementar)</gco:CharacterString></gmd:description></gmd:CI_OnlineResource></gmd:onLine></gmd:onLine><gmd:onLine><gmd:onLine><gmd:CI_OnlineResource><gmd:linkage><gmd:URL>http://cobalto.iocasta.com.br:8080/geoserver/gold/wms?service=WMS&amp;version=1.1.0&amp;request=GetMap&amp;layers=gold%3Apl_iwt_rvr_20121217&amp;bbox=-73.96181409564394%2C-33.74996165100936%2C-34.79465626487467%2C5.26007448205177&amp;width=768&amp;height=768&amp;srs=EPSG%3A4326&amp;styles=&amp;format=application/openlayers</gmd:URL></gmd:linkage><gmd:protocol><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">WWW:LINK-1.0-http--link</gco:CharacterString></gmd:protocol><gmd:description><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Link para visualização de camada geográfica (OpenLayers)</gco:CharacterString></gmd:description></gmd:CI_OnlineResource></gmd:onLine></gmd:onLine><gmd:onLine><gmd:onLine><gmd:CI_OnlineResource><gmd:linkage><gmd:URL>http://cobalto.iocasta.com.br:8080/geoserver/gold/wms?service=WMS&amp;version=1.1.0&amp;request=GetMap&amp;layers=gold%3Apl_iwt_rvr_20121217&amp;bbox=-73.96181409564394%2C-33.74996165100936%2C-34.79465626487467%2C5.26007448205177&amp;width=177&amp;height=245&amp;srs=EPSG%3A4326&amp;styles=&amp;format=image/png</gmd:URL></gmd:linkage><gmd:protocol><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">OGC:WMS</gco:CharacterString></gmd:protocol><gmd:description><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Serviço OGC para visualização de camada geográfica (WMS)</gco:CharacterString></gmd:description></gmd:CI_OnlineResource></gmd:onLine></gmd:onLine><gmd:onLine><gmd:onLine><gmd:CI_OnlineResource><gmd:linkage><gmd:URL>http://cobalto.iocasta.com.br:8080/geoserver/gold/wms?service=WMS&amp;version=1.1.0&amp;request=GetMap&amp;layers=gold%3Apl_iwt_rvr_20121217&amp;bbox=-73.96181409564394%2C-33.74996165100936%2C-34.79465626487467%2C5.26007448205177&amp;width=177&amp;height=245&amp;srs=EPSG%3A4326&amp;styles=&amp;format=image/geotiff</gmd:URL></gmd:linkage><gmd:protocol><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">WWW:DOWNLOAD-1.0-http--download</gco:CharacterString></gmd:protocol><gmd:description><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Download de arquivo Geotif</gco:CharacterString></gmd:description></gmd:CI_OnlineResource></gmd:onLine></gmd:onLine><gmd:onLine><gmd:onLine><gmd:CI_OnlineResource><gmd:linkage><gmd:URL>http://cobalto.iocasta.com.br:8080/geoserver/gold/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=gold%3Apl_iwt_rvr_20121217&amp;format=Shapefile</gmd:URL></gmd:linkage><gmd:protocol><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">WWW:DOWNLOAD-1.0-http--download</gco:CharacterString></gmd:protocol><gmd:description><gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Download de arquivo vetorial Shape File</gco:CharacterString></gmd:description></gmd:CI_OnlineResource></gmd:onLine></gmd:onLine></gmd:MD_DigitalTransferOptions>
+         </gmd:transferOptions>
+      </gmd:MD_Distribution>
+  </gmd:distributionInfo>
+   <gmd:dataQualityInfo>
+      <gmd:DQ_DataQuality>
+         <gmd:scope>
+            <gmd:DQ_Scope>
+               <gmd:level>
+                  <gmd:MD_ScopeCode codeListValue="dataset" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ScopeCode" />
+               </gmd:level>
+            </gmd:DQ_Scope>
+         </gmd:scope>
+         <gmd:lineage>
+            <gmd:LI_Lineage>
+               <gmd:processStep>
+                  <gmd:LI_ProcessStep>
+                     <gmd:description>
+                        <gco:CharacterString>Os dados referente as rodovias brasileiras foram disponibilizados em 2025 pelo OpenStreetMaos e obtidos pela AECOM em 2025. As informações foram enriquecidas e tratadas pela AECOM. que adotou as seguintes etapas: 1 - Limpeza e padronização dos arquivos shapefiles separados por região. 2 - União e simplificação de geometrias. 3 - Validação de consistência das geometrias. 4 - Limpeza de dados e atributos. 5 - Enriquecimento de informações AECOM. 6 - Reprojeção para padrão AECOM.</gco:CharacterString>
+                     </gmd:description>
+                     <gmd:dateTime>
+                        <gco:DateTime>2018-12-18T00:00:00</gco:DateTime>
+                     </gmd:dateTime>
+                     <gmd:source />
+                  </gmd:LI_ProcessStep>
+               </gmd:processStep>
+            </gmd:LI_Lineage>
+         </gmd:lineage>
+      </gmd:DQ_DataQuality>
+  </gmd:dataQualityInfo>
+   <gmd:metadataConstraints>
+      <gmd:MD_LegalConstraints>
+         <gmd:accessConstraints>
+            <gmd:MD_RestrictionCode codeListValue="RESTRICTED" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode" />
+         </gmd:accessConstraints>
+         <gmd:useConstraints>
+            <gmd:MD_RestrictionCode codeListValue="unclassified" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode" />
+         </gmd:useConstraints>
+      </gmd:MD_LegalConstraints>
+   </gmd:metadataConstraints>
+   <gmd:metadataMaintenance>
+      <gmd:MD_MaintenanceInformation>
+         <gmd:maintenanceAndUpdateFrequency>
+            <gmd:MD_MaintenanceFrequencyCode codeListValue="irregular" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_MaintenanceFrequencyCode" />
+         </gmd:maintenanceAndUpdateFrequency>
+         <gmd:maintenanceNote gco:nilReason="missing">
+            <gco:CharacterString />
+         </gmd:maintenanceNote>
+      </gmd:MD_MaintenanceInformation>
+  </gmd:metadataMaintenance>
+   <SupplementaryFiles>
+      <DataDictionary>No</DataDictionary>
+      <Metadata>No</Metadata>
+      <Methodologies>No</Methodologies>
+      <Others>No</Others>
+      <CategoryAcronym>TRN</CategoryAcronym>
+      <Theme>Rodovias</Theme>
+  </SupplementaryFiles>
+   <data_dictionary>
+      <field>
+         <name>ref</name>
+         <description>Código de referência da rodovia, como "BR-381" ou "MG-010". É o identificador oficial da estrada, geralmente usado em placas.</description>
+      </field>
+      <field>
+         <name>amc_ext_km</name>
+         <description>Dado criado pela AECOM para representar a extensão em Kilômetros.</description>
+      </field>
+      <field>
+         <name>acm_classe</name>
+         <description>Dado criado pela AECOM para identificar a classe da rodovia.</description>
+      </field>
+      <field>
+         <name>name</name>
+         <description>Nome da via, como "Rodovia Fernão Dias" ou "Avenida Afonso Pena". Pode ser diferente do ref.</description>
+      </field>
+      <field>
+         <name>osm_id</name>
+         <description>Identificador único do objeto no banco de dados do OpenStreetMap. Pode ser de um way, relation ou node.</description>
+      </field>
+      <field>
+         <name>code</name>
+         <description>Código interno ou categorização adicional da via. Pode variar conforme a fonte dos dados derivados do OSM. Nem sempre está presente.</description>
+      </field>
+      <field>
+         <name>fclass</name>
+         <description>Classe funcional da via, como: motorway, primary, secondary, residential, etc. Indica a importância da via na malha viária.</description>
+      </field>
+      <field>
+         <name>oneway</name>
+         <description>Indica se a via é mão única. Pode ser yes, no, ou -1 (mão única no sentido reverso).</description>
+      </field>
+      <field>
+         <name>maxspeed</name>
+         <description>Velocidade máxima permitida na via, geralmente em km/h. Pode ser um número (80) ou texto (signals, none).</description>
+      </field>
+      <field>
+         <name>bridge</name>
+         <description>Indica se a via é uma ponte. Pode ser yes, no, ou estar ausente.</description>
+      </field>
+      <field>
+         <name>tunnel</name>
+         <description>Indica se a via passa por um túnel. Pode ser yes, no, ou estar ausente.</description>
+      </field>
+      <field>
+         <name>acm_id</name>
+         <description>Dado criado pela AECOM - Chave primária.</description>
+      </field>
+  </data_dictionary>
+</gmd:MD_Metadata>

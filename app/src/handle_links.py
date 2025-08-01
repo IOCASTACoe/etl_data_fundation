@@ -1,111 +1,92 @@
 from owslib.wfs import WebFeatureService
-
-from urllib.parse import quote
-
-
-def format_url(data: str):
-    data = data.replace("\n", "")
-    data = quote(data, safe=":/?&=,")
-    return data
+from owslib.wms import WebMapService
 
 
-def url_wms(url: str, layer_name: str, bbox: str) -> str:
-
-    return f"""{url}wms
-?service=WMS
-&version=1.1.0
-&request=GetMap
-&layers={layer_name}
-&styles=
-&bbox={bbox}
-&width=177
-&height=245
-&tiled=true
-&srs=EPSG:4326
-&format=image/png
-&transparent=true"""
+import urllib.parse
 
 
-### GeoJson
+def wms_format(layer_name: str, bbox: str) -> dict:
+
+    return {
+        "service": "WMS",
+        "version": "1.1.0",
+        "request": "GetMap",
+        "layers": layer_name,
+        "bbox": bbox,
+        "width": "177",
+        "height": "245",
+        "srs": "EPSG:4326",
+        "styles": "",
+    }
 
 
-def url_geo_json(url: str, layer_name: str) -> str:
+def get_bounds(type_name: str) -> tuple[int, int, int, int]:
 
-    return f"""{url}ows
-?service=WFS
-&version=1.0.0
-&request=GetFeature
-&typeName={layer_name}
-&outputFormat=application/json"""
-
-
-##### KMZ
-
-
-def url_kms(url: str, layer_name: str, bbox: str) -> str:
-
-    return f"""{url}ows
-?service=WMS
-&version=1.1.0
-&request=GetMap
-&layers={layer_name}
-&width=1024
-&height=768
-&bbox={bbox}
-&format=application/vnd.google-earth.kmz+xml"""
-
-
-#### Shapefile
-
-
-def url_shape(url: str, layer_name: str) -> str:
-
-    return f"""{url}ows
-?service=WFS
-&version=1.0.0
-&request=GetFeature
-&typeName={layer_name}
-&outputFormat=SHAPE-ZIP"""
-
-
-def url_thumbnail(url: str, layer_name: str, bbox: str) -> str:
-    return f"""{url}wms
-?service=WMS
-&version=1.1.0
-&request=GetMap
-&layers={layer_name}
-&bbox={bbox}
-&width=100
-&height=100
-&srs=EPSG-4326
-&styles=
-&format=image/png"""
-
-
-def get_bounds(url: str, type_name: str) -> tuple[int, int, int, int]:
-
-    wfs20 = WebFeatureService(url=f"{url}/wfs", version="2.0.0")
-    layer = wfs20.contents[type_name]
+    url: str = "http://cobalto.iocasta.com.br:8080/geoserver"
+    wms_service = WebMapService(url=f"{url}/wms", version="1.3.0")
+    layer = wms_service.contents[type_name]
     return layer.boundingBox
 
 
 def get_urls(url: str, layer_name: str) -> list[dict]:
 
-    bounds = get_bounds(url, layer_name)
-    str_bounds: str = ",".join(map(str, bounds))
+    bounds = get_bounds(layer_name)
+    str_bounds: str = ",".join(map(str, bounds[:-1]))
 
-    wms_url = url_wms(url, layer_name, str_bounds)
-    geo_json_url = url_geo_json(url, layer_name)
-    kmz_url = url_kms(url, layer_name, str_bounds)
-    shape_url = url_shape(url, layer_name)
-    thumbnail_url = url_thumbnail(url, layer_name, str_bounds)
+    wms_link = f"{url}wms?"
+    wfs_link = f"{url}ows?"
+
+    wfs_url = {
+        "service": "WFS",
+        "version": "1.0.0",
+        "request": "GetFeature",
+        "typeName": layer_name,
+    }
+    wms_url = wms_format(layer_name, str_bounds)
 
     result = []
-    result.append({"wms_url": format_url(wms_url)})
-    result.append({"geo_json_url": format_url(geo_json_url)})
-    result.append({"kmz_url": format_url(kmz_url)})
-    result.append({"shape_url": format_url(shape_url)})
-    result.append({"thumbnail_url": format_url(thumbnail_url)})
+
+    record_datadict = {
+        "url": f"https://cobalto.iocasta.com.br:8080/geoserver/gold/datadict/{layer_name}",
+        "protocol": "WWW:LINK-1.0-http--link",
+        "label": "Link para dicionário de dados ou documentação complementar)",
+    }
+    result.append(record_datadict)
+
+    url_openlayers = wms_url.copy()
+    url_openlayers["width"] = "768"
+    url_openlayers["height"] = "768"
+    record_open_layers = {
+        "url": f"{wms_link}{urllib.parse.urlencode(url_openlayers)}&format=application/openlayers",
+        "protocol": "WWW:LINK-1.0-http--link",
+        "label": "Link para visualização de camada geográfica (OpenLayers)",
+    }
+    result.append(record_open_layers)
+
+    url_wms2 = wms_url.copy()
+    record_wms2 = {
+        "url": f"{wms_link}{urllib.parse.urlencode(url_wms2)}&format=image/png",
+        "protocol": "OGC:WMS",
+        "label": "Serviço OGC para visualização de camada geográfica (WMS)",
+    }
+    result.append(record_wms2)
+
+    if layer_name.find(":rst") > -1:
+        url_shape = wfs_url.copy()
+        record_shape = {
+            "url": f"{wfs_link}{urllib.parse.urlencode(url_shape)}&format=Shapefile",
+            "protocol": "WWW:DOWNLOAD-1.0-http--download",
+            "label": "Download de arquivo vetorial Shape File",
+        }
+        result.append(record_shape)
+    else:
+        url_geotiff = wms_url.copy()
+        record_geotiff = {
+        "url": f"{wms_link}{urllib.parse.urlencode(url_geotiff)}&format=image/geotiff",
+        "protocol": "WWW:DOWNLOAD-1.0-http--download",
+        "label": "Download de arquivo Geotif",
+        }
+        result.append(record_geotiff)
 
     return result
 
@@ -116,15 +97,16 @@ if __name__ == "__main__":
 
     # Example usage
     url: str = "http://cobalto.iocasta.com.br:8080/geoserver/gold/"
-    layer_name: str = "gold:pol_soc _ils_20240410"
+    # layer_name: str = "gold:pl_iwt_rvr_20121217"
+    layer_name = "gold:pl_iwt_rvr_20121217"
 
     urls = get_urls(url, layer_name)
 
-    file = "/home/wilson/workspace/etl_data_fundation/temp_files/79c1f828-7c2b-40c6-a450-f2d67e2d096b/md_soc_com_qlb_20250605.xml"
-            
+    file = "/home/wilson/workspace/etl_data_fundation/docs/teste.xml"
+
     teste = HandleXML(file)
     saida = teste.complete_links(file, urls)
-
+    print(saida)
 
 """
 from owslib.wps import WebProcessingService

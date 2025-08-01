@@ -37,7 +37,7 @@ def main(path:str):
     logger.info("Get XML data")
     xml_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xml")
     obj_xml = HandleXML(xml_file_full_path.__str__())
-    if file_type == "gpkg":
+    if file_type == ".gpkg":
         obj_xml.complete_dictionary(xml_file_full_path.__str__(), attibutes)
     if len(obj_xml.erros) >0:
         logger.error(f"Errors found in XML: {obj_xml.get_erros()}")
@@ -67,7 +67,7 @@ def main(path:str):
     
 
     logger.info(f"Remove dir: {dir_path}.")
-    #shutil.rmtree(dir_path)    
+    shutil.rmtree(dir_path)    
 
     logger.info(f"Finish: {file_name}.")
 
