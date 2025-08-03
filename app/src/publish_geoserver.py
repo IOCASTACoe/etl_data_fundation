@@ -78,11 +78,11 @@ def publiblish_geoserver(file_path:str,
 
     sld_name = sld_file_full_path.stem
 
-    sld_xpath = "//StyledLayerDescriptor/@version"
-    tree = ET.parse(file_path)
+    sld_xpath = ".//StyledLayerDescriptor/@version"
+    tree = ET.parse(sld_file_full_path.as_posix().__str__())
     root = tree.getroot()
-    sld_version = root.find(sld_xpath)    
 
+    sld_version = root.attrib['version']
 
     geo.upload_style(path=sld_file_full_path.as_posix().__str__(),
                     name=sld_name, 
@@ -91,8 +91,7 @@ def publiblish_geoserver(file_path:str,
 
     geo.publish_style(layer_name=id_layer, 
                     style_name=sld_name,
-                    workspace=settings.GEOSERVER_WORKSPACE, 
-                    sld_version=sld_version)
+                    workspace=settings.GEOSERVER_WORKSPACE)
 
     
 

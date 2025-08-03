@@ -3,7 +3,7 @@
 
 from geo.Geoserver import Geoserver
 
-GEOSERVER_URL:str = "http://cobalto.iocasta.com.br:8080/geoserver"
+GEOSERVER_URL:str = "http://carbono.iocasta.com.br:8080/geoserver"
 
 GEOSERVER_USER:str = 'admin'
 GEOSERVER_PASSWORD:str = 'geoserver'
@@ -15,7 +15,7 @@ geo = Geoserver(
     password=GEOSERVER_PASSWORD,
 )  
 
-colecao = geo.get_layers()
+colecao = geo.get_layers("gold")
 links = []
 for detail in colecao['layers']['layer']:
     link = detail['href']

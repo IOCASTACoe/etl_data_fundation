@@ -20,7 +20,7 @@ workbook = load_workbook(filename=file_path, read_only=True)
 sheet = workbook.active
 with open("upload_log.txt", "w") as log_file:
     records =list(sheet.iter_rows(min_row=2, values_only=True))
-    for row in records[:4]:
+    for row in records:
         try:
 
             path = str(row[nrw_path]).replace(origen, destino).replace("\\", "/")
@@ -36,6 +36,8 @@ with open("upload_log.txt", "w") as log_file:
             sld_path = Path(path, sld).as_posix()
 
             url = "http://carbono.iocasta.com.br:8201/uploadfiles/"
+            #url = "http://127.0.0.1:8000/uploadfiles/"
+
 
             payload = {}
             files_payload = [

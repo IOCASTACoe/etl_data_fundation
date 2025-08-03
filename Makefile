@@ -6,7 +6,7 @@ cache:
 
 docker_deploy:
 	docker rm -f etl_instance etl_instance
-	docker build -t etl_image  .	
+	docker build -t etl_image  .	--no-cache
 	docker run -it -d -p 8201:8000 --restart=always --name etl_instance etl_image
 
 docker_build:
