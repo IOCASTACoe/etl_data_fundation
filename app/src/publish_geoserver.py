@@ -5,6 +5,7 @@ import pathlib
 import app.src.config as settings
 from geo.Geoserver import Geoserver
 from app.src.coverages import modify_layer
+import xml.etree.ElementTree as ET
 
 
 logger = logging.getLogger(__name__)
@@ -76,13 +77,22 @@ def publiblish_geoserver(file_path:str,
 
 
     sld_name = sld_file_full_path.stem
+
+    sld_xpath = "//StyledLayerDescriptor/@version"
+    tree = ET.parse(file_path)
+    root = tree.getroot()
+    sld_version = root.find(sld_xpath)    
+
+
     geo.upload_style(path=sld_file_full_path.as_posix().__str__(),
                     name=sld_name, 
-                    workspace=settings.GEOSERVER_WORKSPACE)
+                    workspace=settings.GEOSERVER_WORKSPACE,
+                    sld_version=sld_version)
 
     geo.publish_style(layer_name=id_layer, 
                     style_name=sld_name,
-                    workspace=settings.GEOSERVER_WORKSPACE)
+                    workspace=settings.GEOSERVER_WORKSPACE, 
+                    sld_version=sld_version)
 
     
 

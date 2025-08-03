@@ -34,7 +34,8 @@ async def upload_files(files: List[UploadFile] = File(...)):
     try:
         main(main_path)
     except Exception as e:
-        return {"error": str(e)}
+        saida = ",".join([x for x in files]) + "\t\t" + str(e)
+        return Response(status_code=http.HTTPStatus.INTERNAL_SERVER_ERROR, content=saida)
     
     return {"filenames": [file.filename for file in files]}
 

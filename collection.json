@@ -1,0 +1,590 @@
+[
+    {
+        "title": "Comunidades Quilombolas 2025",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\SOC\\Quilombolas\\INCRA\\20250605",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/SOC/Quilombolas/INCRA/20250605/md_soc_com_qlb_20250605.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/SOC/Quilombolas/INCRA/20250605/pol_soc_com_qlb_20250605.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/SOC/Quilombolas/INCRA/20250605/sld_soc_com_qlb_20250605.sld"
+    },
+    {
+        "title": "Comunidades Quilombolas 2024",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\SOC\\Quilombolas\\INCRA\\20240301\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/SOC/Quilombolas/INCRA/20240301/00/md_soc_com_qlb_20240301.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/SOC/Quilombolas/INCRA/20240301/00/pol_soc_com_qlb_20240301.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/SOC/Quilombolas/INCRA/20240301/00/sld_soc_com_qlb_20240301.sld"
+    },
+    {
+        "title": "Biomas 20040101",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\BIO\\biomas\\IBGE\\2004010100\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/BIO/biomas/IBGE/2004010100/00/md_bio_bme_20040101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/BIO/biomas/IBGE/2004010100/00/pol_bio_bme_20040101.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/BIO/biomas/IBGE/2004010100/00/sld_bio_bme_20040101.sld"
+    },
+    {
+        "title": "Desastres Naturais do Brasil 20220101",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\DST\\desastres_naturais\\MIDR\\20220101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/DST/desastres_naturais/MIDR/20220101/00/md_dst_nd_20220101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/DST/desastres_naturais/MIDR/20220101/00/pol_dst_nd_20220101.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/DST/desastres_naturais/MIDR/20220101/00/sld_dst_nd_20220101.sld"
+    },
+    {
+        "title": "Terras Indígenas",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\SOC\\Terras_indigenas\\FUNAI\\20240410\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/SOC/Terras_indigenas/FUNAI/20240410/00/md_soc _ils_202404102.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/SOC/Terras_indigenas/FUNAI/20240410/00/pol_soc _ils_20240410.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/SOC/Terras_indigenas/FUNAI/20240410/00/sld_soc _ils_20240410.sld"
+    },
+    {
+        "title": "Rodovias 20250523",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\TRN\\Rodovias\\OpenStreet\\20250523\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/TRN/Rodovias/OpenStreet/20250523/00/md_trn_rd_20250523.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/TRN/Rodovias/OpenStreet/20250523/00/pl_trn_rd_20250523.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/TRN/Rodovias/OpenStreet/20250523/00/sld_trn_rd_20250523.sld"
+    },
+    {
+        "title": "CAR AC",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250501\\00\\car_ac",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ac/md_pcd_car_ac_20250501.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ac/pol_pcd_car_ac_20250501.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ac/sld_pcd_car_ac_20250501.sld"
+    },
+    {
+        "title": "CAR AM",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250501\\00\\car_am",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_am/md_pcd_car_am_20250501.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_am/pol_pcd_car_am_20250501.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_am/sld_pcd_car_am_20250501.sld"
+    },
+    {
+        "title": "CAR AP",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250501\\00\\car_ap",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ap/md_pcd_car_ap_20250501.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ap/pol_pcd_car_ap_20250501.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ap/sld_pcd_car_ap_20250501.sld"
+    },
+    {
+        "title": "CAR BA",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250501\\00\\car_ba",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ba/md_pcd_car_ba_20250501.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ba/pol_pcd_car_ba_20250501.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_ba/sld_pcd_car_ba_20250501.sld"
+    },
+    {
+        "title": "CAR DF",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250501\\00\\car_df",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_df/md_pcd_car_df_20250501.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_df/pol_pcd_car_df_20250501.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_df/sld_pcd_car_df_20250501.sld"
+    },
+    {
+        "title": "CAR PA",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250501\\00\\car_pa",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_pa/md_pcd_car_pa_20250501.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_pa/pol_pcd_car_pa_20250501.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_pa/sld_pcd_car_pa_20250501.sld"
+    },
+    {
+        "title": "CAR PR",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250501\\00\\car_pr",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_pr/md_pcd_car_pr_20250501.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_pr/pol_pcd_car_pr_20250501.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250501/00/car_pr/sld_pcd_car_pr_20250501.sld"
+    },
+    {
+        "title": "CAR MA",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250502\\00\\car_ma",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_ma/md_pcd_car_ma_20250502.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_ma/pol_pcd_car_ma_20250502.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_ma/sld_pcd_car_ma_20250502.sld"
+    },
+    {
+        "title": "CAR PE",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250502\\00\\car_pe",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_pe/md_pcd_car_pe_20250502.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_pe/pol_pcd_car_pe_20250502.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_pe/sld_pcd_car_pe_20250502.sld"
+    },
+    {
+        "title": "CAR PI",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250502\\00\\car_pi",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_pi/md_pcd_car_pi_20250502.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_pi/pol_pcd_car_pi_20250502.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_pi/sld_pcd_car_pi_20250502.sld"
+    },
+    {
+        "title": "CAR RJ",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250502\\00\\car_rj",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_rj/md_pcd_car_rj_20250502.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_rj/pol_pcd_car_rj_20250502.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_rj/sld_pcd_car_rj_20250502.sld"
+    },
+    {
+        "title": "CAR RN",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250502\\00\\car_rn",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_rn/md_pcd_car_rn_20250502.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_rn/pol_pcd_car_rn_20250502.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_rn/sld_pcd_car_rn_20250502.sld"
+    },
+    {
+        "title": "CAR RO",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250502\\00\\car_ro",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_ro/md_pcd_car_ro_20250502.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_ro/pol_pcd_car_ro_20250502.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_ro/sld_pcd_car_ro_20250502.sld"
+    },
+    {
+        "title": "CAR SC",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250502\\00\\car_sc",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_sc/md_pcd_car_sc_20250502.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_sc/pol_pcd_car_sc_20250502.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250502/00/car_sc/sld_pcd_car_sc_20250502.sld"
+    },
+    {
+        "title": "CAR AL",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250505\\00\\car_al",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_al/md_pcd_car_al_20250505.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_al/pol_pcd_car_al_20250505.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_al/sld_pcd_car_al_20250505.sld"
+    },
+    {
+        "title": "CAR GO",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250505\\00\\car_go",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_go/md_pcd_car_go_20250505.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_go/pol_pcd_car_go_20250505.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_go/sld_pcd_car_go_20250505.sld"
+    },
+    {
+        "title": "CAR MG",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250505\\00\\car_mg",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_mg/md_pcd_car_mg_20250505.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_mg/pol_pcd_car_mg_20250505.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_mg/sld_pcd_car_mg_20250505.sld"
+    },
+    {
+        "title": "CAR SP",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250505\\00\\car_sp",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_sp/md_pcd_car_sp_20250505.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_sp/pol_pcd_car_sp_20250505.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250505/00/car_sp/sld_pcd_car_sp_20250505.sld"
+    },
+    {
+        "title": "CAR ES",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250506\\00\\car_es",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_es/md_pcd_car_es_20250506.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_es/pol_pcd_car_sp_20250506.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_es/sld_pcd_car_es_20250506.sld"
+    },
+    {
+        "title": "CAR MS",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250506\\00\\car_ms",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_ms/md_pcd_car_ms_20250506.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_ms/pol_pcd_car_ms_20250506.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_ms/sld_pcd_car_ms_20250506.sld"
+    },
+    {
+        "title": "CAR MT",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250506\\00\\car_mt",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_mt/md_pcd_car_mt_20250506.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_mt/pol_pcd_car_mt_20250506.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_mt/sld_pcd_car_mt_20250506.sld"
+    },
+    {
+        "title": "CAR PB",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250506\\00\\car_pb",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_pb/md_pcd_car_pb_20250506.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_pb/pol_pcd_car_pb_20250506.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_pb/sld_pcd_car_pb_20250506.sld"
+    },
+    {
+        "title": "CAR TO",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250506\\00\\car_to",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_to/md_pcd_car_to_20250506.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_to/pol_pcd_car_to_20250506.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250506/00/car_to/sld_pcd_car_to_20250506.sld"
+    },
+    {
+        "title": "CAR CE",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250509\\00\\car_ce",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_ce/md_pcd_car_ce_20250509.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_ce/pol_pcd_car_ce_20250509.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_ce/sld_pcd_car_ce_20250509.sld"
+    },
+    {
+        "title": "CAR RR",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250509\\00\\car_rr",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_rr/md_pcd_car_rr_20250509.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_rr/pol_pcd_car_rr_20250509.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_rr/sld_pcd_car_rr_20250509.sld"
+    },
+    {
+        "title": "CAR RS",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250509\\00\\car_rs",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_rs/md_pcd_car_rs_20250509.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_rs/pol_pcd_car_rs_20250509.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_rs/sld_pcd_car_rs_20250509.sld"
+    },
+    {
+        "title": "CAR SE",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\car\\SICAR\\20250509\\00\\car_se",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_se/md_pcd_car_se_20250509.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_se/pol_pcd_car_se_20250509.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/car/SICAR/20250509/00/car_se/sld_pcd_car_se_20250509.sld"
+    },
+    {
+        "title": "Nascentes 20170101",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IWT\\nascentes\\ANA\\20170101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IWT/nascentes/ANA/20170101/00/md_pto_iwt_nasc_20170101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IWT/nascentes/ANA/20170101/00/pnt_iwt_nasc_20170101.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IWT/nascentes/ANA/20170101/00/sld_iwt_nasc_20170101.sld"
+    },
+    {
+        "title": "Valor da Terra Nua",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\ECN\\valor_terra\\INCRA\\20250514\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/ECN/valor_terra/INCRA/20250514/00/md_ecn_blv_20250514.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/ECN/valor_terra/INCRA/20250514/00/pol_ecn_blv_20250514.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/ECN/valor_terra/INCRA/20250514/00/sld_ecn_blv_20250514.sld"
+    },
+    {
+        "title": "Embargos Ambientais",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\embargos_ambientais\\IBAMA\\20240328\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/embargos_ambientais/IBAMA/20240328/00/md_pcd_ei_20240328.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/embargos_ambientais/IBAMA/20240328/00/pol_pcd_ei_20240328.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/embargos_ambientais/IBAMA/20240328/00/sld_pcd_ei_20240328.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2023",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20230101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20230101/md_imb_uso_20230101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20230101/rst_imb_uso_20230101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20230101/sld_imb_uso_20230101.sld"
+    },
+    {
+        "title": "Espécies Ameaçadas 20240101",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\BIO\\especies_ameacadas\\20240101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/BIO/especies_ameacadas/20240101/00/md_bio_sp_end_20240101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/BIO/especies_ameacadas/20240101/00/pnt_bio_sp_end_20240101.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/BIO/especies_ameacadas/20240101/00/sld_bio_sp_end_20240101.sld"
+    },
+    {
+        "title": "Unidades de Conservação",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\unidades_conservacao\\CNUC\\20250315\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/unidades_conservacao/CNUC/20250315/00/md_pcd_pa_20250315.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/unidades_conservacao/CNUC/20250315/00/pol_pcd_pa_20250315.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/unidades_conservacao/CNUC/20250315/00/sld_pcd_pa_20250315.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2022",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20220101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20220101/md_imb_uso_20220101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20220101/rst_imb_uso_20220101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20220101/sld_imb_uso_20220101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2021",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20210101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20210101/md_imb_uso_20210101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20210101/rst_imb_uso_20210101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20210101/sld_imb_uso_20210101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2020",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20200101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20200101/md_imb_uso_20200101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20200101/rst_imb_uso_20200101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20200101/sld_imb_uso_20200101.sld"
+    },
+    {
+        "title": "Municípios 2022",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\LOC\\municipios\\IBGE\\20220101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/LOC/municipios/IBGE/20220101/00/md_loc_mun_20220101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/LOC/municipios/IBGE/20220101/00/pol_loc_mun_20220101.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/LOC/municipios/IBGE/20220101/00/sld_loc_mun_20220101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2019",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20190101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20190101/md_imb_uso_20190101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20190101/rst_imb_uso_20190101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20190101/sld_imb_uso_20190101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2018",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20180101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20180101/md_imb_uso_20180101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20180101/rst_imb_uso_20180101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20180101/sld_imb_uso_20180101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2017",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20170101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20170101/md_imb_uso_20170101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20170101/rst_imb_uso_20170101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20170101/sld_imb_uso_20170101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2016",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20160101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20160101/md_imb_uso_20160101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20160101/rst_imb_uso_20160101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20160101/sld_imb_uso_20160101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2015",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20150101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20150101/md_imb_uso_20150101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20150101/rst_imb_uso_20150101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20150101/sld_imb_uso_20150101.sld"
+    },
+    {
+        "title": "Uso e ocupação do solo do ano de 2014",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\historico_uso\\Mapbiomas\\20240618\\00\\20140101",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20140101/md_imb_uso_20140101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20140101/rst_imb_uso_20140101.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/historico_uso/Mapbiomas/20240618/00/20140101/sld_imb_uso_20140101.sld"
+    },
+    {
+        "title": "Zonas UTM",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\LOC\\zona_utm\\esri\\20240717\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/LOC/zona_utm/esri/20240717/00/md_loc_utm_20240717.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/LOC/zona_utm/esri/20240717/00/pol_loc_utm_20240717.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/LOC/zona_utm/esri/20240717/00/sld_loc_utm_20240717.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (1 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_1.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_1.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_1.sld"
+    },
+    {
+        "title": "Zona Costeira",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\BIO\\zona_costeira\\IBGE\\20240730\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/BIO/zona_costeira/IBGE/20240730/00/md_bio_cz_20240730.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/BIO/zona_costeira/IBGE/20240730/00/pol_bio_cz_20240730.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/BIO/zona_costeira/IBGE/20240730/00/sld_bio_cz_20240730.sld"
+    },
+    {
+        "title": "Infrações Ambientais 20250107",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\infracoes\\IBAMA\\20250107\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/infracoes/IBAMA/20250107/00/pto_pcd_infr_20250107.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/infracoes/IBAMA/20250107/00/pnt_pcd_infr_20250107.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/infracoes/IBAMA/20250107/00/sld_pcd_infr_20250107.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (2 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_2.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_2.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_2.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (3 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_3.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_3.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_3.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (4 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_4.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_4.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_4.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (5 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_5.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_5.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_5.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (6 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_6.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_6.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_6.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (7 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_7.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_7.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_7.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (8 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_8.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_8.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_8.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (9 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_9.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_9.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_9.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (10 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_10.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_10.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_10.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (11 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_11.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_11.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_11.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (12 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_12.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_12.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_12.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (13 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_13.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_13.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_13.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (14 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_14.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_14.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_14.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (15 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_15.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_15.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_15.sld"
+    },
+    {
+        "title": "Estoque de carbono no solo do ano de 2023 (16 de 16)",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMB\\estoque_carbono\\20230101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/md_imb_crbn_20230101_16.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/rst_imb_crbn_20230101_16.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMB/estoque_carbono/20230101/00/sld_imb_crbn_20230101_16.sld"
+    },
+    {
+        "title": "Frequência de Queimadas",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\CMA\\frequencia_queimadas\\MapBiomas\\20240618\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/CMA/frequencia_queimadas/MapBiomas/20240618/00/md_cma_frq_ba_14_23_20240618.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/CMA/frequencia_queimadas/MapBiomas/20240618/00/rst_cma_frq_ba_14_23_20240618.tif",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/CMA/frequencia_queimadas/MapBiomas/20240618/00/sld_cma_frq_ba_14_23_20240618.sld"
+    },
+    {
+        "title": "Sítios Arqueológicos 20250508",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\SOC\\Sitios_arqueologicos\\AECOM\\20250508\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/SOC/Sitios_arqueologicos/AECOM/20250508/00/md_soc_arc_20250508.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/SOC/Sitios_arqueologicos/AECOM/20250508/00/pnt_soc_arc_20250508.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/SOC/Sitios_arqueologicos/AECOM/20250508/00/sld_soc_arc_20250508.sld"
+    },
+    {
+        "title": "Cavidades",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\ENV\\cavidades\\AECOM\\20250612",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/ENV/cavidades/AECOM/20250612/md_pnt_env_cav_20250601.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/ENV/cavidades/AECOM/20250612/pol_env_cav_20250612.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/ENV/cavidades/AECOM/20250612/sld_pol_env_cav_20250612.sld"
+    },
+    {
+        "title": "Áreas Militares",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IMT\\areas_militares\\IBAMA\\20220516\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IMT/areas_militares/IBAMA/20220516/00/md_imt_ma_20220516.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IMT/areas_militares/IBAMA/20220516/00/pol_imt_ma_20220516.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IMT/areas_militares/IBAMA/20220516/00/sld_imt_ma_20220516.sld"
+    },
+    {
+        "title": "Rios",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\IWT\\rios\\ANA\\20121217\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/IWT/rios/ANA/20121217/00/md_iwt_rvr_20121217.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/IWT/rios/ANA/20121217/00/pl_iwt_rvr_20121217.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/IWT/rios/ANA/20121217/00/sld_iwt_rvr_20121217.sld"
+    },
+    {
+        "title": "Erodibilidade dos solos brasileiros",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\ENV\\erodibilidade_solo\\EMBRAPA\\20201130\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/ENV/erodibilidade_solo/EMBRAPA/20201130/00/md_env_ero_sl_20201130.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/ENV/erodibilidade_solo/EMBRAPA/20201130/00/pol_env_ero_sl_20201130.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/ENV/erodibilidade_solo/EMBRAPA/20201130/00/sld_env_ero_sl_20201130.sld"
+    },
+    {
+        "title": "Processos minerários brasileiros 20250605",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\processos_minerarios\\ANM\\20250605\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/processos_minerarios/ANM/20250605/00/md_pcd_mp_20250605.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/processos_minerarios/ANM/20250605/00/pol_pcd_mp_20250605.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/processos_minerarios/ANM/20250605/00/sld_pcd_mp_20250605.sld"
+    },
+    {
+        "title": "Grades do Brasil",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\BND\\grade_br_150k\\AECOM\\20250723\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/BND/grade_br_150k/AECOM/20250723/00/md_bnd_br_150k.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/BND/grade_br_150k/AECOM/20250723/00/pol_bnd_br_150k.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/BND/grade_br_150k/AECOM/20250723/00/sld_bnd_br_150k.sld"
+    },
+    {
+        "title": "Projetos de Carbono Caaobi",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\projetos_credito_carbono\\caaobi\\20240701\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/projetos_credito_carbono/caaobi/20240701/00/md_pcd_cc_caaobi_20240701.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/projetos_credito_carbono/caaobi/20240701/00/pol_pcd_cc_caaobi_20240701.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/projetos_credito_carbono/caaobi/20240701/00/sld_pcd_cc_caaobi_20240701.sld"
+    },
+    {
+        "title": "Projetos de Carbono Tero",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\PCD\\projetos_credito_carbono\\tero\\20240701\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/PCD/projetos_credito_carbono/tero/20240701/00/md_pcd_cc_tero_20240701.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/PCD/projetos_credito_carbono/tero/20240701/00/pol_pcd_cc_tero_20240701.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/PCD/projetos_credito_carbono/tero/20240701/00/sld_pcd_cc_tero_20240701.sld"
+    },
+    {
+        "title": "Vigor da Pastagem 20230101",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\ENV\\vigor_da_pastagem\\AECOM\\20250612\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/ENV/vigor_da_pastagem/AECOM/20250612/00/md_env_imb_pst_mg_20230101.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/ENV/vigor_da_pastagem/AECOM/20250612/00/pol_imb_pst_mg_20230101.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/ENV/vigor_da_pastagem/AECOM/20250612/00/sld_env_pst_mg_20230101.sld"
+    },
+    {
+        "title": "Desmatamento acumulado do Cerrado de 2000 a 2023",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\ENV\\desmatamento\\PRODES\\20241108",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20241108/md_env_dsto_cer_20241108.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20241108/pol_env_dsto_cer_20241108.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20241108/sld_env_dsto_cer_20241108.sld"
+    },
+    {
+        "title": "Desmatamento acumulado do Caatinga de 2000 a 2024",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\ENV\\desmatamento\\PRODES\\20240927\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20240927/00/md_env_dsto_caa_20240927.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20240927/00/pol_env_dsto_caa_20240927_modificado.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20240927/00/sld_env_dsto_caa_20240927.sld"
+    },
+    {
+        "title": "Desmatamento acumulado do Mata Atlântica de 2000 a 2025",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\ENV\\desmatamento\\PRODES\\20240704\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20240704/00/md_env_dsto_mat_20240704.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20240704/00/pol_env_dsto_mat_20240704.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/ENV/desmatamento/PRODES/20240704/00/sld_env_dsto_mat_20240704.sld"
+    },
+    {
+        "title": "Estados",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\LOC\\estado\\IBGE\\20220101\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/LOC/estado/IBGE/20220101/00/md_loc_sta_20220101.xm",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/LOC/estado/IBGE/20220101/00/pol_loc_sta_20220101.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/LOC/estado/IBGE/20220101/00/sld_loc_sta_20220101.sld"
+    },
+    {
+        "title": "\tÁreas Prioritárias para Biodiversidade 20181218",
+        "path": "M:\\COE_Digital\\coe_digital_data\\silver_data\\RESTRICTED\\BIO\\importancia_biologica\\MMA\\20181218\\00",
+        "xml_path": "/home/wilson/silver_data/RESTRICTED/BIO/importancia_biologica/MMA/20181218/00/md_bio_imp_bio_20181218.xml",
+        "gpkg_path": "/home/wilson/silver_data/RESTRICTED/BIO/importancia_biologica/MMA/20181218/00/pol_bio_imp_bio_20181218.gpkg",
+        "sld_path": "/home/wilson/silver_data/RESTRICTED/BIO/importancia_biologica/MMA/20181218/00/sld_bio_imp_bio_20181218.sld"
+    }
+]
