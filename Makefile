@@ -5,23 +5,23 @@ cache:
 
 
 docker_deploy:
-	docker rm -f etl_instance etl_instance
-	docker build -t etl_image  .	--no-cache
-	docker run -it -d -p 8201:8000 --restart=always --name etl_instance etl_image
+	docker rm -f etl_instance 
+	docker build -t etl_api  .	--no-cache
+	docker run  -it -d -p 8206:8000 --restart=always --name etl_instance etl_api
 
 docker_build:
 	docker build -t etl  .	
-
-docker_run:
-	docker run -it -d -p 8201:80 --restart=always --name etl_instance etl
 
 docker_exec:
 	docker exec -it conservare /bin/bash /bin/bash
 
 docker_rm:
-	docker rm -f etl_instance etl
+	docker rm -f etl_instance 
 
 poetry_update:
 	poetry env activate
-	oetry update
+	poetry update
+
+ - ssl_registry:
+  - sudo certbot certonly --standalone -d etlapidev.iocasta.com.br
 
