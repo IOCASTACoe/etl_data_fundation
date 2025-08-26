@@ -40,8 +40,22 @@ Once the application is running, you can access the API documentation at `http:/
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
 
 
-## wkhtmltopdf
 
-```sh
-sudo apt-get install wkhtmltopdf
+# Bases de testes
+
+```powershel
+M:\COE_Digital\coe_digital_data\testes
+```
+
+
+# NGIMX CONFIGURATON
+
+```conf
+http {
+
+      ##
+      # Basic Settings
+      ##
+      client_max_body_size 4G; 
+
 ```

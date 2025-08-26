@@ -2,7 +2,6 @@ import requests
 import json
 import app.src.config as settings
 
-import ast
 import re
 from geo.Geoserver import Geoserver
 from app.src.publis_catalog import delete_record

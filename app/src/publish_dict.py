@@ -4,9 +4,7 @@ from venv import logger
 import requests
 import xml.etree.ElementTree as ET
 from app.src import config as settings
-
 import jinja2
-
 import app.src.config as settings
 
 logger = logging.getLogger(__name__)

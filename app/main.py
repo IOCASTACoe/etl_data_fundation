@@ -34,7 +34,7 @@ async def upload_files(files: List[UploadFile] = File(...)):
     try:
         main(main_path)
     except Exception as e:
-        saida = ",".join([x for x in files]) + "\t\t" + str(e)
+        saida = ",".join([x.filename for x in files]) + "\t\t\n" + str(e)
         return Response(status_code=http.HTTPStatus.INTERNAL_SERVER_ERROR, content=saida)
     
     return {"filenames": [file.filename for file in files]}
@@ -47,7 +47,7 @@ async def get_data_dict(key: str):
 @app.get("/get_geonetwork_data_dict/", response_class=HTMLResponse)
 async def get_geonetwork_data_dict(key: str):
     saida = proc_key(key)
-    # 9f14313c-28ff-425c-8e8c-842820211fcd
+    
 
     return saida
 

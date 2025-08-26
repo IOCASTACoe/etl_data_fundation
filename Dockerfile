@@ -18,7 +18,6 @@ RUN mkdir -p /app/logs \
     && mkdir -p /app/templates  
 
 RUN apt-get update \
-  && apt-get install -y wkhtmltopdf \
   && apt-get install -y gettext \
   && apt-get install -y build-essential \
   && apt-get install -y libpq-dev \

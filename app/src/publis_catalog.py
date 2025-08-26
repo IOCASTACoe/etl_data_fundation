@@ -59,7 +59,7 @@ def upload_xml_geonetwork(file_path:str) -> str:
 
     params = {
         "metadataType": "METADATA",
-        "uuidProcessing": "GENERATEUUID",
+        #"uuidProcessing": "NONE",
         "group": "",
         "category": "",
         "rejectIfInvalid": False,
@@ -80,7 +80,7 @@ def upload_xml_geonetwork(file_path:str) -> str:
         },
         auth=(settings.GEONETWORK_USERNAME, settings.GEONETWORK_PASSWORD),
         headers=headers,
-        verify=certifi.where(),
+        #
     )
 
     if response.status_code != 201:

@@ -45,6 +45,10 @@ def main(path:str):
     record:dict = obj_xml.record
     logger.info("Get XML passed.")
 
+    
+    # Grava o link do dicionario de dados
+    #obj_xml.ajusta_link_datadict(xml_file_full_path.__str__(), uuid)
+    
     logger.info("Publish Geonetwork")
     uuid:str = upload_xml_geonetwork(xml_file_full_path.__str__())
 
