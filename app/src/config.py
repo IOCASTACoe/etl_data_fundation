@@ -8,16 +8,20 @@ ENV: str = "dev"
 
 VALID_FILES: Tuple[str, ...] = (".gpkg", ".xml", ".xlsx")
 
-##### GEOSERVER
-GEOSERVER_URL:str = 'https://gisqas.iocasta.com.br/geoserver'
+if ENV == "dev":
+    GEOSERVER_URL:str = 'https://gisdev.iocasta.com.br/geoserver'
+    GEONETWORK_SERVER:str = 'https://catalogdev.iocasta.com.br'
+    ETLAPI_URL:str = 'https://etlapidev.iocasta.com.br'
+else:
+    GEOSERVER_URL:str = 'https://gisqas.iocasta.com.br/geoserver'
+    GEONETWORK_SERVER:str = 'https://catalogqas.iocasta.com.br'
+    ETLAPI_URL:str = 'https://etlapiqas.iocasta.com.br'
+
 
 GEOSERVER_USER:str = 'admin'
 GEOSERVER_PASSWORD:str = 'geoserver'
 GEOSERVER_WORKSPACE:str = 'gold'
 
-##### GEONETWORK
-##### GEONETWORK
-GEONETWORK_SERVER:str = 'https://catalogqas.iocasta.com.br'
 GEONETWORK_USERNAME:str = 'admin'
 GEONETWORK_PASSWORD:str = 'admin'
 GEONETWORK_AUTH_URL = GEONETWORK_SERVER + "/srv/eng/info?type=me"
@@ -31,4 +35,3 @@ def init_dir():
     if not os.path.isdir(dir_name):
         logging.info(f"Creating directory {dir_name}")
         os.mkdir(dir_name)
-

@@ -40,8 +40,26 @@ Once the application is running, you can access the API documentation at `http:/
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
 
 
-## wkhtmltopdf
 
-```sh
-sudo apt-get install wkhtmltopdf
+# Bases de testes
+
+```powershel
+M:\COE_Digital\coe_digital_data\testes
+```
+
+
+
+# URL do metadado
+https://metadados.geo.ibge.gov.br/geonetwork_ibge/srv/por/catalog.search#/metadata/874f39fe-1527-4468-b7fc-8ae94c8e4cf2
+
+# NGIMX CONFIGURATON
+
+```conf
+http {
+
+      ##
+      # Basic Settings
+      ##
+      client_max_body_size 4G; 
+
 ```

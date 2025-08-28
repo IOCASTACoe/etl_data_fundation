@@ -1,6 +1,6 @@
 from owslib.wfs import WebFeatureService
 from owslib.wms import WebMapService
-
+import app.src.config as settings
 
 import urllib.parse
 
@@ -22,7 +22,7 @@ def wms_format(layer_name: str, bbox: str) -> dict:
 
 def get_bounds(type_name: str) -> tuple[int, int, int, int]:
 
-    url: str = "http://cobalto.iocasta.com.br:8080/geoserver"
+    url: str = settings.GEOSERVER_URL
     wms_service = WebMapService(url=f"{url}/wms", version="1.3.0")
     layer = wms_service.contents[type_name]
     return layer.boundingBox

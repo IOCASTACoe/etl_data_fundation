@@ -35,9 +35,6 @@ def publiblish_geoserver(file_path:str,
     values = [sta_date,end_date,cat_acronym,id]
     dict_keywords = "|".join([f"{k}:{v}" for k,v in zip(keys, values)])
 
-    
-
-
     attributes = {"abstract": abstract
                   ,"title": title
                  ,"keywords": dict_keywords
@@ -94,15 +91,8 @@ def publiblish_geoserver(file_path:str,
                     workspace=settings.GEOSERVER_WORKSPACE)
 
     
-
-
     modify_layer(layer=id_layer, attributes=attributes, is_coverage=is_coverage)
 
-
-    
-
-
-    
     """
     geo.edit_featuretype(recalculate="nativebbox,latlonbbox", 
                          store_name=id, # type: ignore'

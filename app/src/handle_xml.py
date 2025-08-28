@@ -1,6 +1,6 @@
 import logging
 import xml.etree.ElementTree as ET
-
+import app.src.config as settings
 
 logger = logging.getLogger(__name__)
 
@@ -128,25 +128,52 @@ class HandleXML:
 
     def complete_dictionary(self, file_path: str, attibutes:list[dict]):
 
+
         tree = ET.parse(file_path)
         root = tree.getroot()
+        root = self._read_gmd_xml(file_path)
         
-        title_elements = root.findall(".//data_dictionary/field")
+
+        # Extract namespaces from the file
+        # namespaces = {node[0]: node[1] for _, node in ET.iterparse(file_path, events=['start-ns'])}
+
+        namespaces: dict = {
+            "gmd": "http://www.isotc211.org/2005/gmd",
+            "gco": "http://www.isotc211.org/2005/gco",
+            # Add other namespaces as needed
+        }
+
+        # Register namespaces to ensure they are preserved
+        for prefix, uri in namespaces.items():
+            ET.register_namespace(prefix, uri)
+
+
+        title_elements = self._extract_gmd_data(root, ".//data_dictionary/field", namespaces=namespaces)
 
         for field in title_elements:
 
             attr_type = "None"
             col = [x for x in attibutes if x['name'] == field.find('name').text]
             if col:
-                 attr_type = col[0]['type']
+                attr_type = col[0]['type']
+            else:
+                attr_type = "-//-"
 
             el = ET.Element("type")
             el.text = attr_type
             field.append(el)
-        
-        ET.ElementTree(root).write(file_path, encoding="utf-8", xml_declaration=True)
 
-     
+
+        str_uuid:str = ".//gmd:fileIdentifier/gco:CharacterString"
+        uuid_element = self._extract_gmd_data(root, str_uuid, namespaces=namespaces)
+        uuid = uuid_element[0].text
+
+        str_xpath: str = ".//gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[1]/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"
+        url_element = self._extract_gmd_data(root, str_xpath, namespaces=namespaces)
+        url_element[0].text = f"{settings.ETLAPI_URL}/get_geonetwork_data_dict?key={uuid}"        
+
+        ET.ElementTree(root).write(file_path, encoding="utf-8", xml_declaration=True)
+        
 
     
     def complete_links(self, file_path: str, lst_links: list[dict]):
