@@ -48,6 +48,10 @@ M:\COE_Digital\coe_digital_data\testes
 ```
 
 
+
+# URL do metadado
+https://metadados.geo.ibge.gov.br/geonetwork_ibge/srv/por/catalog.search#/metadata/874f39fe-1527-4468-b7fc-8ae94c8e4cf2
+
 # NGIMX CONFIGURATON
 
 ```conf
