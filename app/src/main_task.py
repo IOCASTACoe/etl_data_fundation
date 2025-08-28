@@ -32,13 +32,16 @@ def main(path:str):
         logger.info("Geopackage Attributes")
         excel_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".gpkg")
         attibutes:list[dict] = get_gpkg_attributes(excel_file_full_path.__str__())
+    else:
+        attibutes:list[dict] = []
 
 
     logger.info("Get XML data")
     xml_file_full_path: pathlib.Path = valid_files(dir_path=dir_path, extension=".xml")
     obj_xml = HandleXML(xml_file_full_path.__str__())
-    if file_type == ".gpkg":
-        obj_xml.complete_dictionary(xml_file_full_path.__str__(), attibutes)
+    
+    
+    obj_xml.complete_dictionary(xml_file_full_path.__str__(), attibutes)
     if len(obj_xml.erros) >0:
         logger.error(f"Errors found in XML: {obj_xml.get_erros()}")
         raise Exception(f"Errors found in XML: {obj_xml.get_erros()}")  
